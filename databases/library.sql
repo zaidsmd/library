@@ -40,22 +40,23 @@ CREATE TABLE IF NOT EXISTS Item_unit
 #==========RESERVATION TABLE===========#
 CREATE TABLE IF NOT EXISTS Reservations
 (
-    id   int      NOT NULL PRIMARY KEY,
+    id           int      NOT NULL PRIMARY KEY,
     opening_date datetime NOT NULL DEFAULT CURDATE(),
-    user_id int NOT NULL ,
-    item_unit_id int NOT NULL ,
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (item_unit_id) REFERENCES Item_unit(id)
+    user_id      int      NOT NULL,
+    item_unit_id int      NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users (id),
+    FOREIGN KEY (item_unit_id) REFERENCES Item_unit (id)
 );
 #==========RESERVATION TABLE===========#
-CREATE TABLE IF NOT EXISTS Borrowings (
-    id int NOT NULL PRIMARY KEY ,
-    opening_date datetime NOT NULL DEFAULT CURDATE(),
-    closing_date datetime NOT NULL,
-    opening_user_id int NOT NULL ,
-    closing_user_id int NOT NULL ,
-    reservation_id int NOT NULL ,
-    FOREIGN KEY (opening_user_id) REFERENCES Users(id),
-    FOREIGN KEY (closing_user_id) REFERENCES Users(id),
-    FOREIGN KEY (reservation_id) REFERENCES Reservations(id)
+CREATE TABLE IF NOT EXISTS Borrowings
+(
+    id              int      NOT NULL PRIMARY KEY,
+    opening_date    datetime NOT NULL DEFAULT CURDATE(),
+    closing_date    datetime NOT NULL,
+    opening_user_id int      NOT NULL,
+    closing_user_id int      NOT NULL,
+    reservation_id  int      NOT NULL,
+    FOREIGN KEY (opening_user_id) REFERENCES Users (id),
+    FOREIGN KEY (closing_user_id) REFERENCES Users (id),
+    FOREIGN KEY (reservation_id) REFERENCES Reservations (id)
 );
