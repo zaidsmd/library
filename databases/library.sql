@@ -1,7 +1,7 @@
 #==========USERS TABLE===========#
 CREATE TABLE IF NOT EXISTS Users
 (
-    id                   int                          NOT NULL PRIMARY KEY,
+    id                   int                          NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username             varchar(30)                  NOT NULL,
     name                 varchar(30)                  NOT NULL,
     las_name             varchar(30)                  NOT NULL,
@@ -20,18 +20,19 @@ CREATE TABLE IF NOT EXISTS Users
 #==========ITEM TABLE===========#
 CREATE TABLE IF NOT EXISTS Item
 (
-    id           int          NOT NULL PRIMARY KEY,
+    id           int          NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title        varchar(100) NOT NULL,
     author       varchar(30)  NOT NULL,
     type         varchar(10)  NOT NULL,
     picture      varchar(256) NOT NULL,
     release_date date         NOT NULL,
+    language     varchar(30)  NOT NULL,
     page_cout    int          NOT NULL
 );
 #==========ITEM_UNIT TABLE===========#
 CREATE TABLE IF NOT EXISTS Item_unit
 (
-    id           int         NOT NULL PRIMARY KEY,
+    id           int         NOT NULL PRIMARY KEY AUTO_INCREMENT,
     status       varchar(30) NOT NULL,
     brought_date date        NOT NULL,
     item_id      int         NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Item_unit
 #==========RESERVATION TABLE===========#
 CREATE TABLE IF NOT EXISTS Reservations
 (
-    id           int      NOT NULL PRIMARY KEY,
+    id           int      NOT NULL PRIMARY KEY AUTO_INCREMENT,
     opening_date datetime NOT NULL DEFAULT CURDATE(),
     user_id      int      NOT NULL,
     item_unit_id int      NOT NULL,
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS Reservations
 #==========RESERVATION TABLE===========#
 CREATE TABLE IF NOT EXISTS Borrowings
 (
-    id              int      NOT NULL PRIMARY KEY,
+    id              int      NOT NULL PRIMARY KEY AUTO_INCREMENT,
     opening_date    datetime NOT NULL DEFAULT CURDATE(),
     closing_date    datetime NOT NULL,
     opening_user_id int      NOT NULL,
