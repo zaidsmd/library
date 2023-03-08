@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Item
     author       varchar(30)  NOT NULL,
     type         varchar(10)  NOT NULL,
     picture      varchar(256) NOT NULL,
-    release_date date         NOT NULL,
+    release_date varchar(10)         NOT NULL,
     language     varchar(30)  NOT NULL,
     page_cout    int          NOT NULL
 );

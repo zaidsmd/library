@@ -8,7 +8,8 @@
   background-color: transparentize(white,.7);
   @include rounded-borders();
   box-shadow: $shadow;
-  height: 300px;
+  max-height: calc(300px + 4vw);
+  min-height: calc(300px + 4vw);
   width: 100%;
 }
 .card-img {
@@ -36,7 +37,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 90%;
+  height: available;
+  margin-bottom: auto;
+  margin-top: auto;
   .title {
     display: -webkit-box;
     -webkit-line-clamp: 1;

@@ -49,12 +49,38 @@ select {
   padding: 0.6rem 2rem;
   border-radius: 0.5rem;
   overflow: clip;
-  color: #BEAF98;
+  color: #986C41;
   appearance: none !important;
   background-image: none !important;
 }
 select:focus {
-  outline: 1px solid #BEAF98;
+  outline: 1px solid #986C41;
+}
+
+.input {
+  width: 100%;
+}
+.input input {
+  border-radius: 0.5rem;
+  overflow: clip;
+  background-color: white;
+  color: #986C41;
+  border: none !important;
+  box-shadow: none !important;
+}
+.input input:focus {
+  outline: 2px solid #BEAF98;
+}
+.input input::placeholder {
+  color: #986C41;
+}
+
+.search {
+  position: absolute;
+  top: 16%;
+  font-size: 1.2rem;
+  color: #BEAF98;
+  right: 1rem;
 }
 
 nav {
@@ -63,7 +89,7 @@ nav {
   align-items: center;
   background-color: white;
   border-bottom: 1px solid #BEAF98;
-  padding: 0.5rem 1.5rem;
+  padding: 0.2rem 1.5rem;
   justify-content: space-between;
 }
 
@@ -117,7 +143,8 @@ nav {
   border-radius: 0.5rem;
   overflow: clip;
   box-shadow: 0 0 11px rgba(190, 175, 152, 0.6);
-  height: 300px;
+  max-height: calc(300px + 4vw);
+  min-height: calc(300px + 4vw);
   width: 100%;
 }
 
@@ -148,7 +175,9 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 90%;
+  height: available;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 .card-body .title {
   display: -webkit-box;
@@ -212,6 +241,12 @@ body > * {
   font-family: "Overlock", cursive;
   font-size: 4rem;
   text-align: center;
+  max-width: 400px;
+}
+.search-section .right form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .search-section .right .input {
   width: 70%;
@@ -236,10 +271,6 @@ body > * {
   color: #F2EBE3;
   right: 1rem;
 }
-.search-section .right .input label {
-  color: #BEAF98;
-  font-size: 1.5rem;
-}
 .search-section .left {
   padding: 3.5rem 0;
   align-items: center;
@@ -247,7 +278,7 @@ body > * {
   width: 50%;
 }
 .search-section .left:hover {
-  padding: 0.6rem 0;
+  padding: 1.5rem 0;
 }
 .search-section .left .card-link {
   pointer-events: auto;
@@ -259,9 +290,10 @@ body > * {
 }
 .search-section .left .card {
   flex-direction: column;
-  height: fit-content;
   transition: all ease-in-out 300ms;
   gap: 0;
+  max-height: 500px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .search-section .left .card .card-img {
   width: 100%;
@@ -269,10 +301,10 @@ body > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 320px;
+  min-height: calc(300px + 4vw);
 }
 .search-section .left .card .card-img img {
-  min-height: 100%;
+  min-height: calc(300px + 4vw);
   min-width: 100%;
 }
 .search-section .left .card .card-content {
@@ -297,6 +329,9 @@ body > * {
 }
 .search-section .left .card .card-body .author {
   color: #986C41;
+}
+.search-section .left .card .card-footer {
+  display: none;
 }
 
 /*# sourceMappingURL=design.css.map */

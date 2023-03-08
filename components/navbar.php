@@ -1,9 +1,9 @@
 <nav>
-    <div id="logo">
+    <a id="logo" href="../pages">
         <img src="../pictures/logo.png" alt="logo">
         <span>Library</span>
-    </div>
-    <a href="">
+    </a>
+    <a href="profile.php">
         <div class="profile">
             <div class="img">
                 <img src="../pictures/default.png" alt="profile-pic">

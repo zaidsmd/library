@@ -11,10 +11,12 @@ if (isset($_GET["username"])) {
     $statement = $conn->prepare("SELECT * FROM users WHERE `username` = '$username' AND `password` = '$password'");
     $statement->execute();
     $result = $statement->fetchAll();
-    if (count($result) > 0) {
+    if (count($result) > 0 && $result[0]["tickets"] < 3 ) {
         $_SESSION["id"] = $result[0]["id"];
         $_SESSION["sign"] = true;
-        header('Location: home.php');
+        if ($result[0]["role"]=="user"){
+            header('Location: home.php');
+        }
     }
 }
 ?>
@@ -34,7 +36,18 @@ if (isset($_GET["username"])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 <form action="login.php" method="get">
     <h1>Login</h1>
-    <?php echo (isset($_GET["username"])) ?  "<p class='response'>Le mot de pass ou email est incorrect</p>" : "" ?>
+    <?php
+    if (isset($result)){
+        if ($result[0]["tickets"] ==3){
+            ?> <p class='response'>Votre compte a été suspendu</p>
+            <?php
+        }else {
+            ?>
+            <p class='response'>Le mot de pass ou email est incorrect</p>
+            <?php
+        }
+    }
+    ?>
     <div class="relative input">
         <input type="text" id="username"
                name="username"

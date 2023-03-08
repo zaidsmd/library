@@ -54,10 +54,34 @@ select {
   background-color: white;
   padding: .6rem 2rem;
   @include rounded-borders();
-  color: $light-brown;
+  color: $brown;
   appearance: none !important;
   background-image: none !important;
   &:focus {
-    outline: 1px solid $light-brown;
+    outline: 1px solid $brown;
   }
+}
+.input {
+  width: 100%;
+  input {
+    @include rounded-borders();
+    background-color: white;
+    color: $brown;
+    border: none !important;
+    box-shadow: none !important;
+    &:focus {
+      outline: 2px solid $light-brown;
+    }
+    &::placeholder {
+      color: $brown;
+    }
+  }
+
+}
+.search {
+  position: absolute;
+  top: 16%;
+  font-size: 1.2rem;
+  color: $light-brown;
+  right: 1rem;
 }
