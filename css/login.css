@@ -1,6 +1,117 @@
-body {
-    background: linear-gradient(0deg ,rgba(152, 108, 65, 0.68),rgba(152, 108, 65, 0.68)) , url("../pictures/background.jpg");
-    min-width: 100%;
-    min-height: 100%;
-    background-size: cover;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overlock:wght@700&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
+
+:root {
+  font-size: 16px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  overflow: clip;
+  overflow: revert;
+}
+
+.btn-primary {
+  background-color: #4F5949;
+  color: #F2EBE3;
+  transition: 300ms;
+}
+.btn-primary:hover {
+  background-color: #4d6141;
+}
+
+.select {
+  width: 100%;
+  position: relative;
+}
+.select .arrow {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: #BEAF98;
+}
+
+select {
+  width: 100%;
+  border: none;
+  box-shadow: none !important;
+  background-color: white;
+  padding: 0.6rem 2rem;
+  border-radius: 0.5rem;
+  overflow: clip;
+  color: #BEAF98;
+  appearance: none !important;
+  background-image: none !important;
+}
+select:focus {
+  outline: 1px solid #BEAF98;
+}
+
+body {
+  background: linear-gradient(0deg, rgba(152, 108, 65, 0.6), rgba(152, 108, 65, 0.6)), url("../pictures/background.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 90%;
+  max-width: 450px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 0.5rem;
+  overflow: clip;
+}
+
+h1 {
+  color: #986C41;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.input {
+  width: 100%;
+}
+.input input {
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-radius: 0.5rem;
+  overflow: clip;
+}
+.input input:focus ~ label {
+  color: #986C41;
+  transform: translateY(-1.1rem) scale(0.9) !important;
+}
+.input label {
+  color: #BEAF98;
+}
+
+.response {
+  color: #C01E29;
+  background-color: rgba(231, 64, 64, 0.1);
+  border: 1px solid #C01E29;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+/*# sourceMappingURL=login.css.map */

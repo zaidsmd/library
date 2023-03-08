@@ -1,0 +1,63 @@
+@import "mixins";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overlock:wght@700&display=swap');
+//---------------------------------------------------------
+$green : #4F5949;
+$brown : #986C41;
+$light-brown : #BEAF98;
+$creamy : #F2EBE3;
+$black : #0D1713;
+$red : #C01E29;
+$shadow : 0 0 11px transparentize($light-brown,.4);
+$gray : #C1C1C1;
+//---------------------------------------------------------
+//---------------------------------------------------------
+*{
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+:root {
+  font-size: 16px;
+}
+.btn  {
+  cursor: pointer;
+  padding: .5rem 1rem;
+  @include rounded-borders();
+  overflow: revert;
+}
+.btn-primary {
+  background-color: $green;
+  color: $creamy;
+  transition: 300ms;
+  &:hover {
+    background-color: saturate($green,10);
+  }
+}
+.select {
+  width: 100%;
+  position: relative;
+  .arrow {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: $light-brown;
+  }
+}
+select {
+  width: 100%;
+  border: none ;
+  box-shadow: none !important;
+  background-color: white;
+  padding: .6rem 2rem;
+  @include rounded-borders();
+  color: $light-brown;
+  appearance: none !important;
+  background-image: none !important;
+  &:focus {
+    outline: 1px solid $light-brown;
+  }
+}

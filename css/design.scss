@@ -1,0 +1,160 @@
+@import "navbar";
+@import "card";
+//---------------------------------
+body {
+  background-color: $creamy;
+
+  > * {
+    padding: 1rem 2rem;
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 4rem;
+  row-gap: 2rem;
+  width: 100%;
+}
+
+.filter-bar {
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.search-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background: linear-gradient(0deg, transparentize($brown, .4), transparentize($brown, .4)), url("../pictures/background.jpg");
+  background-position: center;
+  background-size: cover;
+  height: max-content;
+  justify-content: space-between;
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+
+    h1 {
+      color: $light-brown;
+      font-weight: 700;
+      font-family: 'Overlock', cursive;
+      font-size: 4rem;
+      text-align: center;
+    }
+
+    .input {
+      width: 70%;
+
+      input {
+        border-radius: 99px;
+        background-color: transparentize(white, .7);
+        color: $creamy;
+        border: none !important;
+        box-shadow: none;
+
+        &:focus {
+          outline: 2px solid $light-brown;
+        }
+
+        &::placeholder {
+          color: $creamy;
+        }
+      }
+
+      .search {
+        position: absolute;
+        top: 16%;
+        font-size: 1.2rem;
+        color: $creamy;
+        right: 1rem;
+      }
+
+      label {
+        color: $light-brown;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .left {
+    padding: 3.5rem 0;
+    align-items: center;
+    pointer-events: none;
+    width: 50%;
+
+    &:hover {
+      padding: .6rem 0;
+    }
+
+    .card-link {
+      pointer-events: auto;
+      transition: all ease-in-out 300ms;
+      width: 27.6%;
+
+      &:hover .card-content {
+        display: flex;
+      }
+
+    }
+
+    .card {
+      flex-direction: column;
+      height: fit-content;
+      transition: all ease-in-out 300ms;
+      gap: 0;
+
+      .card-img {
+        width: 100%;
+        overflow: clip;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 320px;
+
+        img {
+          min-height: 100%;
+          min-width: 100%;
+
+        }
+      }
+
+      .card-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all ease-in-out .3s;
+        display: none;
+      }
+
+      .card-body {
+        height: fit-content;
+        writing-mode: revert;
+        transform: none;
+
+        .title {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-align: center;
+          color: $green;
+        }
+
+        .author {
+          color: $brown;
+        }
+      }
+    }
+  }
+}

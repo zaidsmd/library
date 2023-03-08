@@ -1,0 +1,45 @@
+@import "variables";
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid $light-brown;
+  padding: .5rem 1.5rem;
+  justify-content: space-between;
+}
+#logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    width: 50px;
+  }
+  span {
+    font-weight: 700;
+    font-family: 'Overlock', cursive;
+    font-size: 2rem;
+    color: $green;
+  }
+}
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  padding: .3rem .8rem;
+  @include rounded-borders();
+  .img {
+    width: 40px;
+    height: 40px;
+    overflow: clip;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    img {
+      scale: 1.2;
+    }
+  }
+}
