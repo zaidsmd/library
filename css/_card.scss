@@ -1,5 +1,5 @@
 .card-link{
-  width: 17%;
+  width: 280px;
 }
 .card {
   display: flex;
@@ -8,8 +8,7 @@
   background-color: transparentize(white,.7);
   @include rounded-borders();
   box-shadow: $shadow;
-  max-height: calc(300px + 4vw);
-  min-height: calc(300px + 4vw);
+  height: 300px;
   width: 100%;
 }
 .card-img {

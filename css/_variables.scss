@@ -10,6 +10,7 @@ $black : #0D1713;
 $red : #C01E29;
 $shadow : 0 0 11px transparentize($light-brown,.4);
 $gray : #C1C1C1;
+$navbar-height: 67px;
 //---------------------------------------------------------
 //---------------------------------------------------------
 *{
@@ -34,6 +35,14 @@ $gray : #C1C1C1;
   transition: 300ms;
   &:hover {
     background-color: saturate($green,10);
+  }
+}
+.btn-danger {
+  background-color: $red;
+  color: $creamy;
+  transition: 300ms;
+  &:hover {
+    background-color: saturate($red,10);
   }
 }
 .select {

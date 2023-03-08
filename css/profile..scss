@@ -1,2 +1,92 @@
 @import "navbar";
 @import "side-bar";
+///--------------------------------
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: calc(100vh - $navbar-height);
+  background-color: $creamy;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 4rem;
+  width: 100%;
+
+  h1 {
+    color: $black;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .input-profile {
+    @include rounded-borders();
+    background-color: white;
+    width: 100%;
+    padding: 0 0 0 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    * {
+      padding: .5rem 0;
+    }
+
+    label {
+      display: block;
+      width: 20%;
+      min-width: 150px;
+      padding: .9rem 0;
+
+    }
+
+    input {
+      border: none;
+      width: 100%;
+      padding-left: 1rem;
+      @include rounded-borders();
+
+      &:not([disabled]) {
+        background-color: transparentize($gray, .7);
+
+      }
+
+      &:focus {
+        border: none;
+        box-shadow: none;
+        outline: 1px solid $light-brown;
+      }
+    }
+
+    button {
+      color: $green;
+      font-size: 1.2rem;
+      padding: .5rem 1rem;
+
+      &.hide {
+        visibility: hidden;
+      }
+
+      &:hover, &.active {
+        background-color: $green;
+        color: $creamy;
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+  }
+}

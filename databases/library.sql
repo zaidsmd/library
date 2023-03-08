@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Users
     id                   int                          NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username             varchar(30)                  NOT NULL,
     name                 varchar(30)                  NOT NULL,
-    las_name             varchar(30)                  NOT NULL,
+    last_name             varchar(30)                  NOT NULL,
     identity_card_number varchar(8)                   NOT NULL,
     birthday             date                         NOT NULL,
     type                 varchar(20)                  NOT NULL,

@@ -29,6 +29,15 @@
   background-color: #4d6141;
 }
 
+.btn-danger {
+  background-color: #C01E29;
+  color: #F2EBE3;
+  transition: 300ms;
+}
+.btn-danger:hover {
+  background-color: #cb131f;
+}
+
 .select {
   width: 100%;
   position: relative;
@@ -89,7 +98,7 @@ nav {
   align-items: center;
   background-color: white;
   border-bottom: 1px solid #BEAF98;
-  padding: 0.2rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   justify-content: space-between;
 }
 
@@ -132,7 +141,7 @@ nav {
 }
 
 .card-link {
-  width: 17%;
+  width: 280px;
 }
 
 .card {
@@ -143,8 +152,7 @@ nav {
   border-radius: 0.5rem;
   overflow: clip;
   box-shadow: 0 0 11px rgba(190, 175, 152, 0.6);
-  max-height: calc(300px + 4vw);
-  min-height: calc(300px + 4vw);
+  height: 300px;
   width: 100%;
 }
 
@@ -197,7 +205,7 @@ nav {
 body {
   background-color: #F2EBE3;
 }
-body > * {
+body > *:not(nav) {
   padding: 1rem 2rem;
 }
 
@@ -276,6 +284,9 @@ body > * {
   align-items: center;
   pointer-events: none;
   width: 50%;
+  gap: 0;
+  justify-content: space-between;
+  transition: all ease 0.5s;
 }
 .search-section .left:hover {
   padding: 1.5rem 0;
@@ -283,7 +294,7 @@ body > * {
 .search-section .left .card-link {
   pointer-events: auto;
   transition: all ease-in-out 300ms;
-  width: 27.6%;
+  width: 27.5%;
 }
 .search-section .left .card-link:hover .card-content {
   display: flex;
@@ -292,8 +303,8 @@ body > * {
   flex-direction: column;
   transition: all ease-in-out 300ms;
   gap: 0;
-  max-height: 500px;
   background-color: rgba(255, 255, 255, 0.5);
+  height: revert;
 }
 .search-section .left .card .card-img {
   width: 100%;
@@ -301,17 +312,16 @@ body > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(300px + 4vw);
+  min-height: 19vw;
 }
 .search-section .left .card .card-img img {
-  min-height: calc(300px + 4vw);
+  min-height: 19vw;
   min-width: 100%;
 }
 .search-section .left .card .card-content {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all ease-in-out 0.3s;
   display: none;
 }
 .search-section .left .card .card-body {

@@ -29,6 +29,15 @@
   background-color: #4d6141;
 }
 
+.btn-danger {
+  background-color: #C01E29;
+  color: #F2EBE3;
+  transition: 300ms;
+}
+.btn-danger:hover {
+  background-color: #cb131f;
+}
+
 .select {
   width: 100%;
   position: relative;

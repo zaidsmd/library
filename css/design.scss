@@ -3,8 +3,7 @@
 //---------------------------------
 body {
   background-color: $creamy;
-
-  > * {
+  > *:not(nav) {
     padding: 1rem 2rem;
   }
 }
@@ -92,14 +91,17 @@ body {
     align-items: center;
     pointer-events: none;
     width: 50%;
+    gap: 0;
+    justify-content: space-between;
     &:hover {
       padding: 1.5rem 0;
     }
+    transition: all ease .5s;
 
     .card-link {
       pointer-events: auto;
       transition: all ease-in-out 300ms;
-      width: 27.6%;
+      width: 27.5%;
       &:hover .card-content {
         display: flex;
       }
@@ -110,20 +112,19 @@ body {
       flex-direction: column;
       transition: all ease-in-out 300ms;
       gap: 0;
-      max-height: 500px;
       background-color: transparentize(white,.5);
-
+      height: revert;
       .card-img {
         width: 100%;
         overflow: clip;
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: calc(300px + 4vw);
+        min-height: 19vw;
 
 
         img {
-          min-height: calc(300px + 4vw);
+          min-height: 19vw;
           min-width: 100%;
         }
       }
@@ -132,7 +133,6 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: all ease-in-out .3s;
         display: none;
       }
 
