@@ -12,6 +12,9 @@ if (!isset($_SESSION["sign"])) {
         header('Location:');
     }
 }
+if (!isset($_GET["set"])) {
+    header('Location: my_borrowings.php?set=active');
+}
 ?>
     <!doctype html>
     <html lang="fr">
@@ -23,8 +26,8 @@ if (!isset($_SESSION["sign"])) {
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
         <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/reservations.css">
-        <title>Mes reservation</title>
+        <link rel="stylesheet" href="../css/borrowings.css">
+        <title>Mes emprunts</title>
     </head>
     <body>
     <?php
@@ -40,13 +43,13 @@ if (!isset($_SESSION["sign"])) {
                         <span><?= $result[0]["name"] ?> <?= $result[0]["last_name"] ?></span>
                     </div>
                 </a>
-                <a href="my_reservations.php" class="nav-link active">
+                <a href="my_reservations.php" class="nav-link">
                     <div>
                         <i class="fa-solid fa-calendar-days"></i>
                         <span>Mes reservations</span>
                     </div>
                 </a>
-                <a class="nav-link">
+                <a href="my_borrowings.php" class="nav-link active">
                     <div>
                         <i class="fa-solid fa-box-archive"></i>
                         <span>Mes emprunt</span>
@@ -57,25 +60,41 @@ if (!isset($_SESSION["sign"])) {
         <section class="content">
             <h1>Mes reservations</h1>
             <form action="" method="get">
-                <a href="my_reservations.php?set=active"
+                <a href="my_borrowings.php?set=active"
                    class="btn  <?php if ($_GET["set"] === "active") echo "active" ?>">Active</a>
-                <a href="my_reservations.php?set=complete"
-                   class="btn <?php if ($_GET["set"] === "complete") echo "active" ?> ">Complete</a>
-                <a href="my_reservations.php?set=0" class="btn <?php if ($_GET["set"] == "0") echo "active" ?>">Non
-                    Complete</a>
+                <a href="my_borrowings.php?set=historique"
+                   class="btn <?php if ($_GET["set"] === "historique") echo "active" ?> ">Historique</a>
             </form>
             <div class="card-container">
                 <?php
-                $query = "SELECT * FROM borrowings INNER JOIN reservations r on borrowings.reservation_id = r.id INNER JOIN item_unit iu on r.item_unit_id = iu.id INNER JOIN item i on iu.item_id = i.id where user_id = '$id'";
+                //-----------------------------------------------------------------------------------------
+
+                $query = "SELECT i.picture,
+                                 i.title,
+                                 i.language,
+                                 i.author,
+                                 iu.status,
+                                 r.item_unit_id,
+                                 r.user_id,
+                                 borrowings.opening_date,
+                                 borrowings.closing_date,
+                                 borrowings.opening_user_id,
+                                 borrowings.closing_user_id,
+                                 u.name
+                                 FROM borrowings
+                                          INNER JOIN reservations r on borrowings.reservation_id = r.id
+                                          INNER JOIN item_unit iu on r.item_unit_id = iu.id
+                                          INNER JOIN item i on iu.item_id = i.id
+                                          INNER JOIN users u on borrowings.opening_user_id
+                                 where user_id = '$id'";
+                //-----------------------------------------------------------------------------------------
                 if ($_GET["set"] == "active") {
-                    $query .= " AND DATEDIFF(CURTIME(),opening_date) < 24";
-                } elseif ($_GET["set"] == 0) {
-                    $query .= " AND iu.id NOT IN (SELECT reservation_id FROM borrowings)";
+                    $query .= " AND closing_date is null";
                 } else {
-                    $query .= " AND iu.id IN (SELECT reservation_id FROM borrowings)";
+                    $query .= " AND closing_date is not null";
                 }
                 try {
-                    reservations($query, $conn);
+                    emprunt($query, $conn);
                 } catch (Exception $e) {
                     echo $e;
                 }
@@ -88,51 +107,52 @@ if (!isset($_SESSION["sign"])) {
     </body>
     </html>
 <?php
-function reservations($query, $conn)
+function emprunt($query, $conn)
 {
     $statement = $conn->prepare($query);
     $statement->execute();
     $reservations = $statement->fetchAll();
     if (count($reservations) > 0) {
-        foreach ($reservations as $reservation) {
-            $date = new DateTime(date('y-m-d H:i:s'));
-            $date2 = new DateTime($reservation["opening_date"]);
-            $interval = $date->diff($date2);
-            $interval_final = 24 - $interval->format('%h');
-            if ($interval_final < 0) {
-                $interval_final = 0;
-            }
+        foreach ($reservations as $borrowing) {
+            $now_date = new DateTime();
+            $opening_date = new DateTime(date('Y-m-d H:i:s', strtotime($borrowing["opening_date"] . '+15 days')));
+            $interval = $now_date->diff($opening_date);
             ?>
             <div class="card">
                 <div class="card-content">
                     <div class="card-img">
-                        <img src="../pictures/<?= $reservation["picture"] ?>" alt="">
+                        <img src="../pictures/<?= $borrowing["picture"] ?>" alt="">
                     </div>
                     <div class="card-body">
                         <div class="info">
-                            <p class="title"><?= $reservation["title"] ?></p>
-                            <p>Status: <?= $reservation["status"] ?></p>
-                            <p>Langue: <?= $reservation["language"] ?></p>
-                            <p>Oeuvre id: <?= $reservation["item_unit_id"] ?></p>
-                            <p class="author"><?= $reservation["author"] ?></p>
+                            <p class="title"><?= $borrowing["title"] ?></p>
+                            <p>Status: <?= $borrowing["status"] ?></p>
+                            <p>Langue: <?= $borrowing["language"] ?></p>
+                            <p>Oeuvre id: <?= $borrowing["item_unit_id"] ?></p>
+                            <p class="author"><?= $borrowing["author"] ?></p>
+                        </div>
+                        <div class="gerent">
+                            <p>Gerent id: <?= $borrowing["opening_user_id"] ?></p>
+                            <p><?php echo($borrowing["closing_user_id"] != "" ? "Gerent id:" . $borrowing["closing_user_id"] : "") ?></p>
                         </div>
                         <div class="date">
-                            <p><?= $reservation["opening_date"] ?></p>
+                            <p><?= $borrowing["opening_date"] ?></p>
+                            <p><?= $borrowing["closing_date"] ?></p>
                         </div>
                     </div>
 
                 </div>
                 <div class="time <?php
-                if ($interval_final < 3) {
+                if ($interval->format('%h') < 5) {
                     echo "red";
-                } elseif ($interval_final == 0) {
+                } elseif ($interval->format('%h') == 0 || $borrowing["closing_date"] != "") {
                     echo "gray";
                 } else {
                     echo "green";
                 }
                 ?>">
                     <i class="fa-solid fa-stopwatch"></i>
-                    <p><?= $interval_final . "h" ?></p>
+                    <p><?= $interval->format('%d') . "j" . "\n" . $interval->format('%h') . "h" ?></p>
                 </div>
             </div>
             <?php

@@ -46,7 +46,7 @@ include "../components/navbar.php"
                     <span>Mes reservations</span>
                 </div>
             </a>
-            <a class="nav-link">
+            <a href="my_borrowings.php" class="nav-link">
                 <div>
                     <i class="fa-solid fa-box-archive"></i>
                     <span>Mes emprunt</span>

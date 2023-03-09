@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Item_unit
 CREATE TABLE IF NOT EXISTS Reservations
 (
     id           int      NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    opening_date datetime NOT NULL DEFAULT CURDATE(),
+    opening_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     user_id      int      NOT NULL,
     item_unit_id int      NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users (id),
@@ -52,10 +52,10 @@ CREATE TABLE IF NOT EXISTS Reservations
 CREATE TABLE IF NOT EXISTS Borrowings
 (
     id              int      NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    opening_date    datetime NOT NULL DEFAULT CURDATE(),
-    closing_date    datetime NOT NULL,
+    opening_date    datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    closing_date    datetime,
     opening_user_id int      NOT NULL,
-    closing_user_id int      NOT NULL,
+    closing_user_id int,
     reservation_id  int      NOT NULL,
     FOREIGN KEY (opening_user_id) REFERENCES Users (id),
     FOREIGN KEY (closing_user_id) REFERENCES Users (id),
