@@ -12,9 +12,6 @@ if (!isset($_SESSION["sign"])) {
         header('Location:');
     }
 }
-if (!isset($_GET["set"])) {
-    header('Location: my_reservations.php?set=active');
-}
 ?>
     <!doctype html>
     <html lang="fr">
@@ -69,7 +66,7 @@ if (!isset($_GET["set"])) {
             </form>
             <div class="card-container">
                 <?php
-                $query = "SELECT * FROM reservations JOIN item_unit iu on iu.id = reservations.item_unit_id join item i on i.id = iu.item_id WHERE user_id = '$id' ";
+                $query = "SELECT * FROM borrowings INNER JOIN reservations r on borrowings.reservation_id = r.id INNER JOIN item_unit iu on r.item_unit_id = iu.id INNER JOIN item i on iu.item_id = i.id where user_id = '$id'";
                 if ($_GET["set"] == "active") {
                     $query .= " AND DATEDIFF(CURTIME(),opening_date) < 24";
                 } elseif ($_GET["set"] == 0) {
