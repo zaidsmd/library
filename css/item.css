@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overlock:wght@700&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+:root {
+  font-size: 16px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  overflow: clip;
+  overflow: revert;
+}
+
+.btn-primary {
+  background-color: #4F5949;
+  color: #F2EBE3;
+  transition: 300ms;
+}
+.btn-primary:hover {
+  background-color: #4d6141;
+}
+
+.btn-danger {
+  background-color: #C01E29;
+  color: #F2EBE3;
+  transition: 300ms;
+}
+.btn-danger:hover {
+  background-color: #cb131f;
+}
+
+.select {
+  width: 100%;
+  position: relative;
+}
+.select .arrow {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: #BEAF98;
+}
+
+select {
+  width: 100%;
+  border: none;
+  box-shadow: none !important;
+  background-color: white;
+  padding: 0.6rem 2rem;
+  border-radius: 0.5rem;
+  overflow: clip;
+  color: #986C41;
+  appearance: none !important;
+  background-image: none !important;
+}
+select:focus {
+  outline: 1px solid #986C41;
+}
+
+.input {
+  width: 100%;
+}
+.input input {
+  border-radius: 0.5rem;
+  overflow: clip;
+  background-color: white;
+  color: #986C41;
+  box-shadow: none !important;
+}
+.input input:focus {
+  border: none;
+  box-shadow: none;
+  outline: 1px solid #BEAF98;
+}
+.input input::placeholder {
+  color: #986C41;
+}
+
+.search {
+  position: absolute;
+  top: 16%;
+  font-size: 1.2rem;
+  color: #BEAF98;
+  right: 1rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #BEAF98;
+  padding: 0.5rem 1.5rem;
+  justify-content: space-between;
+}
+
+#logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#logo img {
+  width: 50px;
+}
+#logo span {
+  font-weight: 700;
+  font-family: "Overlock", cursive;
+  font-size: 2rem;
+  color: #4F5949;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  overflow: clip;
+}
+.profile .img {
+  width: 40px;
+  height: 40px;
+  overflow: clip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.profile .img img {
+  scale: 1.2;
+}
+
+body {
+  background-color: #F2EBE3;
+}
+
+/*# sourceMappingURL=item.css.map */

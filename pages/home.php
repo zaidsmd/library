@@ -82,7 +82,7 @@ if (!isset($_SESSION["sign"])) {
                 <select name="language" id="language">
                     <option value="0">Langue</option>
                     <option value="French">Français</option>
-                    <option value="English">English</option>
+                    <option value="English">Anglais</option>
                     <option value="Arabic">Arabe</option>
                 </select>
                 <div class="arrow">
