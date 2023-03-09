@@ -3,6 +3,7 @@
 //---------------------------------
 body {
   background-color: $creamy;
+
   > *:not(nav) {
     padding: 1rem 2rem;
   }
@@ -50,13 +51,15 @@ body {
       font-family: 'Overlock', cursive;
       font-size: 4rem;
       text-align: center;
-      max-width: 400px ;
+      max-width: 400px;
     }
+
     form {
       width: 100%;
       display: flex;
       justify-content: center;
     }
+
     .input {
       width: 70%;
 
@@ -93,15 +96,12 @@ body {
     width: 50%;
     gap: 0;
     justify-content: space-between;
-    &:hover {
-      padding: 1.5rem 0;
-    }
     transition: all ease .5s;
-
     .card-link {
       pointer-events: auto;
       transition: all ease-in-out 300ms;
       width: 27.5%;
+
       &:hover .card-content {
         display: flex;
       }
@@ -112,8 +112,9 @@ body {
       flex-direction: column;
       transition: all ease-in-out 300ms;
       gap: 0;
-      background-color: transparentize(white,.5);
+      background-color: transparentize(white, .5);
       height: revert;
+
       .card-img {
         width: 100%;
         overflow: clip;
@@ -154,6 +155,7 @@ body {
           color: $brown;
         }
       }
+
       .card-footer {
         display: none;
       }

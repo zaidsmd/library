@@ -8,6 +8,7 @@ main {
   min-height: calc(100vh - $navbar-height);
   background-color: $creamy;
 }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -56,12 +57,10 @@ main {
       width: 100%;
       padding-left: 1rem;
       @include rounded-borders();
-
       &:not([disabled]) {
         background-color: transparentize($gray, .7);
 
       }
-
       &:focus {
         border: none;
         box-shadow: none;
@@ -84,9 +83,28 @@ main {
       }
     }
   }
+
   .buttons {
     display: flex;
     flex-direction: row-reverse;
     gap: 1rem;
   }
+}
+
+#authentication-modal .modal-content , #password-modal .modal-content {
+  background-color: $creamy;
+}
+
+.response {
+  color: $red;
+  background-color: rgba(231, 64, 64, 0.1);
+  border: 1px solid $red;
+  width: 100%;
+  text-align: center;
+  padding: .5rem;
+  border-radius: .3rem;
+}
+
+.red {
+  border: 1px solid $red !important;
 }

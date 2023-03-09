@@ -200,82 +200,140 @@ main {
   font-size: 1.5rem;
   font-weight: 500;
 }
-.content form {
+
+.card {
+  border-radius: 0.5rem;
+  overflow: clip;
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  background-color: white;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 0 11px rgba(190, 175, 152, 0.6);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+  padding: 1rem;
+  align-items: stretch;
+}
+.card-content .card-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 150px;
+  border-radius: 0.5rem;
+  overflow: clip;
+}
+.card-content .card-img img {
+  max-width: revert;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1000%;
+}
+
+.title {
+  color: #4F5949;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+
+.author {
+  color: #986C41;
+  text-transform: capitalize;
+}
+
+.date {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-.content .input-profile {
-  border-radius: 0.5rem;
-  overflow: clip;
-  background-color: white;
-  width: 100%;
-  padding: 0 0 0 1rem;
-  display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
 }
-.content .input-profile * {
-  padding: 0.5rem 0;
+.date p {
+  text-align: center;
+  white-space: pre-line;
+  word-spacing: 100vw;
 }
-.content .input-profile label {
-  display: block;
-  width: 20%;
-  min-width: 150px;
-  padding: 0.9rem 0;
+
+.time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0 1rem;
 }
-.content .input-profile input {
-  border: none;
-  width: 100%;
-  padding-left: 1rem;
-  border-radius: 0.5rem;
-  overflow: clip;
+.time i {
+  color: #F2EBE3;
+  font-size: 1.5rem;
 }
-.content .input-profile input:not([disabled]) {
-  background-color: rgba(193, 193, 193, 0.3);
-}
-.content .input-profile input:focus {
-  border: none;
-  box-shadow: none;
-  outline: 1px solid #BEAF98;
-}
-.content .input-profile button {
-  color: #4F5949;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-}
-.content .input-profile button.hide {
-  visibility: hidden;
-}
-.content .input-profile button:hover, .content .input-profile button.active {
-  background-color: #4F5949;
+.time p {
   color: #F2EBE3;
 }
-.content .buttons {
+.time.green {
+  background-color: #4F5949;
+}
+.time.red {
+  background-color: #C01E29;
+}
+.time.gray {
+  background-color: #C1C1C1;
+}
+
+form {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   gap: 1rem;
+  padding: 1rem 0;
+}
+form a {
+  border: 1px solid #4F5949;
+  border-radius: 99px !important;
+}
+form a.active {
+  color: #F2EBE3;
+  background-color: #4F5949;
 }
 
-#authentication-modal .modal-content, #password-modal .modal-content {
-  background-color: #F2EBE3;
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.response {
-  color: #C01E29;
-  background-color: rgba(231, 64, 64, 0.1);
-  border: 1px solid #C01E29;
-  width: 100%;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.not-found i {
+  font-size: 10rem;
+  color: #4F5949;
+}
+.not-found p {
+  font-size: 1.5rem;
+  color: #4F5949;
 }
 
-.red {
-  border: 1px solid #C01E29 !important;
-}
-
-/*# sourceMappingURL=profile..css.map */
+/*# sourceMappingURL=reservations.css.map */
