@@ -71,7 +71,7 @@ if (!isset($_GET["set"])) {
                 <?php
                 $query = "SELECT * FROM reservations JOIN item_unit iu on iu.id = reservations.item_unit_id join item i on i.id = iu.item_id WHERE user_id = '$id' ";
                 if ($_GET["set"] == "active") {
-                    $query .= " AND DATEDIFF(CURTIME(),opening_date) < 24";
+                    $query .= " AND DATEDIFF(CURTIME(),opening_date) < 24 AND iu.id NOT IN (SELECT reservation_id FROM borrowings)";
                 } elseif ($_GET["set"] == 0) {
                     $query .= " AND iu.id NOT IN (SELECT reservation_id FROM borrowings)";
                 } else {

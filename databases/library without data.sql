@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Users
     id                   int                          NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username             varchar(30)                  NOT NULL,
     name                 varchar(30)                  NOT NULL,
-    last_name             varchar(30)                  NOT NULL,
+    last_name            varchar(30)                  NOT NULL,
     identity_card_number varchar(8)                   NOT NULL,
     birthday             date                         NOT NULL,
     type                 varchar(20)                  NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Item
     author       varchar(30)  NOT NULL,
     type         varchar(10)  NOT NULL,
     picture      varchar(256) NOT NULL,
-    release_date varchar(10)         NOT NULL,
+    release_date varchar(10)  NOT NULL,
     language     varchar(30)  NOT NULL,
     page_cout    int          NOT NULL
 );

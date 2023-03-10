@@ -12,11 +12,29 @@ if (!isset($_SESSION["sign"])) {
         header('Location:');
     }
 }
+if (!isset($_GET["id"])) {
+    header('Location: home.php');
+}
 $item_id = $_GET["id"];
-$statement = $conn->prepare("SELECT * FROM item_unit INNER JOIN item i on item_unit.item_id = i.id WHERE item_id = '$item_id'");
+//------------------------------------------------------------------------
+$statement = $conn->prepare("SELECT item_id,
+                                           item_unit.id,
+                                           status,
+                                           title,
+                                           brought_date,
+                                           language,
+                                           picture,
+                                           author,
+                                           type,
+                                           page_count,
+                                           release_date
+                                    FROM item_unit
+                                             INNER JOIN item i on item_unit.item_id = i.id
+                                    WHERE item_id = '$item_id'");
+//-------------------------------------------------------------------------
 $statement->execute();
 $items = $statement->fetchAll();
-if (count($items)==0){
+if (count($items) == 0) {
     $statement = $conn->prepare("SELECT * FROM item  WHERE id = '$item_id'");
     $statement->execute();
     $items = $statement->fetchAll();
@@ -32,13 +50,108 @@ if (count($items)==0){
     <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/item.css">
-    <title><?= $items[0]["title"]?></title>
+    <title><?= $items[0]["title"] ?></title>
 </head>
 <body>
 <?php
 include "../components/navbar.php";
 ?>
+<main>
+    <div class="main-title">
+        <a type="button" href="home.php"><i class="fa-solid fa-chevron-left"></i></a>
+        <h1><?= $items[0]["title"] ?></h1>
+    </div>
+    <div class="content">
+        <div class="item">
+            <div class="item-img">
+                <img src="../pictures/<?= $items[0]["picture"] ?>" alt="<?= $items[0]["title"] ?>">
+            </div>
+            <div class="info">
+                <div class="header">
+                    <h2 class="title"><?= $items[0]["title"] ?></h2>
+                    <span>by: <?= $items[0]["author"] ?></span>
+                </div>
+                <p><?= $items[0]["title"] ?> est <?php echo ($items[0]["type"] == "livre") ? "un" : "une";
+                    echo " " . $items[0]["type"] ?> publiée en <?= $items[0]["release_date"] ?></p>
+                <p>Langue: <?= $items[0]["language"] ?></p>
+                <p>Nombre de page: <?= $items[0]["page_count"] ?> page</p>
+            </div>
+            <div class="availability">
+                <?php
+                if (isset($items[0]["status"])) {
+                    ?>
+                    <div class="available">
+                        <i class="fa-regular fa-circle-check"></i>
+                        <span>Disponible</span>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="not-available">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                        <span>Non-Disponible</span>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+        <div class="items">
+
+            <?php
+            if (isset($items[0]["status"])) {
+                ?>
+                <div class="scroller">
+                    <?php
+                    ?>
+                    <h3>Les exemplaires disponibles</h3>
+                    <?php
+                    foreach ($items as $item) {
+                        $item_unit_id = $item["id"];
+                        ?>
+                        <div class="item-unit">
+                            <div class="item-unit-img">
+                                <img src="../pictures/<?= $item['picture'] ?>" alt="<?= $item["title"] ?>">
+                            </div>
+                            <div class="content">
+                                <div class="info">
+                                    <p>Numéro d’ouvrage: <?= $item_unit_id ?></p>
+                                    <p>Status: <?= $item["status"] ?></p>
+                                    <p>Date d’importation: <?= $item["brought_date"] ?></p>
+                                </div>
+                                <?php
+                                $statement = $conn->prepare("SELECT count(*) as count FROM borrowings INNER JOIN reservations r on borrowings.reservation_id = r.id WHERE item_unit_id = '$item_unit_id' AND closing_date is null ");
+                                $statement->execute();
+                                $count_borrowings = $statement->fetchAll();
+                                $statement = $conn->prepare("SELECT count(*) as count FROM reservations WHERE item_unit_id = '$item_unit_id' AND TIMESTAMPDIFF(hour,opening_date,CURRENT_TIMESTAMP) < 24");
+                                $statement->execute();
+                                $count_reservation = $statement->fetchAll();
+                                $count = $count_reservation[0]['count'] + $count_borrowings[0]["count"];
+                                if ($count = 0  && $item["status"] != "déchirer") {
+                                    ?>
+                                    <button class="btn btn-primary" data-id="<?= $item_unit_id ?>">Réserver</button>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <button disabled class="btn btn-primary" data-id="<?= $item_unit_id ?>">Réserver
+                                    </button>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <?php
+                    } ?>
+                </div>
+                <?php
+            }
+            ?>
+
+        </div>
+    </div>
+</main>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+<script src="../scripts/item.js"></script>
 </body>
 </html>

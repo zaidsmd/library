@@ -95,3 +95,24 @@ select {
   color: $light-brown;
   right: 1rem;
 }
+h1,h2,h3,h4,h5,h6 {
+  text-transform: capitalize;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent $green;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $green;
+  border-radius: 14px;
+  border: none;
+}
