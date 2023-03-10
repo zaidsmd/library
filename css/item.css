@@ -303,10 +303,11 @@ button[disabled]:hover {
 .scroller {
   overflow-y: scroll;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  gap: 1rem;
 }
 
 .item-unit {
@@ -329,6 +330,25 @@ button[disabled]:hover {
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
+}
+
+.modal-content {
+  background-color: #F2EBE3;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-body i {
+  font-size: 4rem;
+  color: #4F5949;
+}
+.modal-body p {
+  font-size: 1.2rem;
+  color: #4F5949;
 }
 
 /*# sourceMappingURL=item.css.map */

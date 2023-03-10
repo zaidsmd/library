@@ -146,10 +146,11 @@ button[disabled] {
 .scroller{
   overflow-y: scroll ;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  gap: 1rem;
 
 }
 .item-unit {
@@ -169,5 +170,22 @@ button[disabled] {
     flex-direction: column;
     gap: .5rem;
     padding: .5rem 1rem;
+  }
+}
+.modal-content {
+  background-color: $creamy;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 4rem;
+    color: $green;
+  }
+  p{
+    font-size: 1.2rem;
+    color: $green;
   }
 }

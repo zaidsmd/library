@@ -47,6 +47,7 @@ if (count($items) == 0) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/item.css">
@@ -97,6 +98,7 @@ include "../components/navbar.php";
             </div>
         </div>
         <div class="items">
+            <h3>Les exemplaires disponibles</h3>
 
             <?php
             if (isset($items[0]["status"])) {
@@ -104,7 +106,6 @@ include "../components/navbar.php";
                 <div class="scroller">
                     <?php
                     ?>
-                    <h3>Les exemplaires disponibles</h3>
                     <?php
                     foreach ($items as $item) {
                         $item_unit_id = $item["id"];
@@ -127,9 +128,11 @@ include "../components/navbar.php";
                                 $statement->execute();
                                 $count_reservation = $statement->fetchAll();
                                 $count = $count_reservation[0]['count'] + $count_borrowings[0]["count"];
-                                if ($count = 0  && $item["status"] != "déchirer") {
+                                if ($count == 0 && $item["status"] != "déchirer") {
                                     ?>
-                                    <button class="btn btn-primary" data-id="<?= $item_unit_id ?>">Réserver</button>
+                                    <button data-modal-target="response-modal" data-modal-toggle="response-modal"
+                                            class="btn btn-primary" data-id="<?= $item_unit_id ?>">Réserver
+                                    </button>
                                     <?php
                                 } else {
                                     ?>
@@ -150,6 +153,28 @@ include "../components/navbar.php";
         </div>
     </div>
 </main>
+<div id="response-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+    <div class="relative w-full h-full max-w-2xl md:h-auto">
+        <!-- Modal content -->
+        <div class="modal-content relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Confirmation
+                </h3>
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6 modal-body">
+
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
+                <button data-modal-hide="response-modal" type="button" class="btn-primary btn w-full">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 <script src="../scripts/item.js"></script>

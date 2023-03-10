@@ -143,9 +143,9 @@ function emprunt($query, $conn)
 
                 </div>
                 <div class="time <?php
-                if ($interval->format('%h') < 5) {
+                if ($interval->format('%d') < 1 && $interval->format('%h')<5) {
                     echo "red";
-                } elseif ($interval->format('%h') == 0 || $borrowing["closing_date"] != "") {
+                } elseif (($interval->format('%d') == 0 && $interval->format('%h') == 0 ) || $borrowing["closing_date"] != "") {
                     echo "gray";
                 } else {
                     echo "green";
