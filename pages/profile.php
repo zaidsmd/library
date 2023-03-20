@@ -9,7 +9,7 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "admin") {
-        header('Location:');
+        header('Location: reservations.php');
     }
 }
 ?>
@@ -53,6 +53,7 @@ include "../components/navbar.php"
                 </div>
             </a>
         </div>
+        <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
     </aside>
     <section class="content">
         <h1>Information Personnel</h1>

@@ -53,3 +53,13 @@
 .card-footer {
   color: $brown;
 }
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 4rem;
+  row-gap: 2rem;
+  width: 100%;
+}

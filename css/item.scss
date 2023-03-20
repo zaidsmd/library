@@ -9,6 +9,9 @@ main {
   flex-direction: column;
   padding: 2rem 5rem;
   align-items: center;
+  @media screen and (max-width: 1240px) {
+   padding: 2rem 1rem;
+  }
 }
 
 .main-title {
@@ -19,14 +22,15 @@ main {
   border-bottom: 1px solid $light-brown;
   color: $green;
   padding: .5rem 0;
+  align-items: center;
 
   i {
     font-size: 1.7rem;
   }
 
   h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 500;
   }
 }
 
@@ -37,6 +41,9 @@ main {
   padding: 1rem 0;
   width: 100%;
   justify-content: space-around;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 }
 
 .item {
@@ -46,10 +53,20 @@ main {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  @media screen and (max-width: 1080px) {
+   width: 50%;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
+
 
   .item-img {
     max-width: 300px;
     @include rounded-borders();
+    @media screen and (max-width: 1280px) {
+      max-width: 250px;
+    }
   }
 
   .info {
@@ -60,7 +77,12 @@ main {
     gap: .5rem;
     font-size: 1.1rem;
     color: $black;
-
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+      &>* {
+        text-align: center;
+      }
+    }
     .title {
       font-size: 2rem;
       font-weight: 500;
@@ -93,6 +115,9 @@ main {
     padding: .2rem .5rem;
     font-size: 1.1rem;
     color: $green;
+    @media screen and (max-width: 1000px) {
+      width: fit-content;
+    }
 
     i {
       font-size: 1.5rem;
@@ -133,6 +158,10 @@ button[disabled] {
   flex-direction: row;
   align-items: center;
   gap: 1rem;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    flex-direction: column;
+  }
   h3{
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -141,6 +170,12 @@ button[disabled] {
     font-size: 2rem;
     color: $green;
     font-weight: 500;
+    @media screen and (max-width: 1000px) {
+      writing-mode: revert;
+      transform: revert;
+      border-bottom: 1px solid $light-brown;
+      padding: .5rem 0;
+    }
   }
 }
 .scroller{
@@ -151,6 +186,10 @@ button[disabled] {
   align-items: center;
   padding: 1rem;
   gap: 1rem;
+  @media screen and (max-width: 1000px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
 }
 .item-unit {
@@ -175,7 +214,7 @@ button[disabled] {
 .modal-content {
   background-color: $creamy;
 }
-.modal-body {
+#response-modal .modal-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -187,5 +226,11 @@ button[disabled] {
   p{
     font-size: 1.2rem;
     color: $green;
+  }
+}
+@media screen and (max-width: 1000px) {
+  h1 , h3 {
+    text-align: center;
+    font-size: 1.5rem;
   }
 }

@@ -22,6 +22,9 @@ $navbar-height: 67px;
 }
 :root {
   font-size: 16px;
+  @media screen and  (max-width:800px) {
+    font-size: 13px;
+  }
 }
 .btn  {
   cursor: pointer;
@@ -33,16 +36,22 @@ $navbar-height: 67px;
   background-color: $green;
   color: $creamy;
   transition: 300ms;
+  min-width: fit-content;
+  max-width: fit-content;
+
   &:hover {
-    background-color: saturate($green,10);
+    background-color: saturate($green, 10);
   }
 }
 .btn-danger {
   background-color: $red;
   color: $creamy;
   transition: 300ms;
+  min-width: fit-content;
+  max-width: fit-content;
+
   &:hover {
-    background-color: saturate($red,10);
+    background-color: saturate($red, 10);
   }
 }
 .select {
@@ -58,14 +67,16 @@ $navbar-height: 67px;
 }
 select {
   width: 100%;
-  border: none ;
+  border: none;
   box-shadow: none !important;
   background-color: white;
-  padding: .6rem 2rem;
+  padding: .6rem 1rem;
+  font-size: 1rem;
   @include rounded-borders();
   color: $brown;
   appearance: none !important;
   background-image: none !important;
+
   &:focus {
     outline: 1px solid $brown;
   }
@@ -77,11 +88,14 @@ select {
     background-color: white;
     color: $brown;
     box-shadow: none !important;
+    border: none;
+
     &:focus {
-        border: none;
-        box-shadow: none;
-        outline: 1px solid $light-brown;
+      border: none;
+      box-shadow: none;
+      outline: 1px solid $light-brown;
     }
+
     &::placeholder {
       color: $brown;
     }
@@ -115,4 +129,77 @@ h1,h2,h3,h4,h5,h6 {
   background-color: $green;
   border-radius: 14px;
   border: none;
+}
+
+.btn-checkbox {
+  border: 1px solid $green;
+  color: $green;
+  border-radius: 99px;
+  min-width: fit-content;
+  max-width: fit-content;
+
+  label {
+    pointer-events: none;
+  }
+
+  input {
+    display: none;
+    pointer-events: none;
+  }
+
+  &.active {
+    background-color: $green;
+    color: $creamy;
+  }
+}
+
+button[disabled] {
+  background-color: $gray;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.modal-content {
+  background-color: $creamy;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  i {
+    font-size: 10rem;
+    color: $green;
+  }
+
+  p {
+    font-size: 1.5rem;
+    color: $green;
+  }
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+
+  .navbar {
+    width: 100%;
+  }
+}
+
+.error {
+  font-size: .8rem;
+  color: $red;
+  display: none;
+
+  &.show {
+
+    display: block;
+  }
 }

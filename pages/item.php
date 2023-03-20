@@ -9,7 +9,7 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "admin") {
-        header('Location:');
+        header('Location: reservations.php');
     }
 }
 if (!isset($_GET["id"])) {
@@ -48,7 +48,6 @@ if (count($items) == 0) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/item.css">
     <title><?= $items[0]["title"] ?></title>
@@ -98,10 +97,9 @@ include "../components/navbar.php";
             </div>
         </div>
         <div class="items">
-            <h3>Les exemplaires disponibles</h3>
-
             <?php
             if (isset($items[0]["status"])) {
+                echo "<h3>Les exemplaires disponibles</h3>"
                 ?>
                 <div class="scroller">
                     <?php

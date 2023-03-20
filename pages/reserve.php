@@ -31,7 +31,7 @@ $statement->execute();
 $user_borrowing_count = $statement->fetchAll();
 $user_remaining_reservation = 3 - ($user_borrowing_count[0]["count"] + $user_reservation_count[0]["count"]);
 if ($user_remaining_reservation <= 0 ){
-    echo json_encode('<i class="fa-solid fa-exclamation"></i> <p>Cette ouvrage est reservée ou emprunté</p>');
+    echo json_encode('<i class="fa-solid fa-exclamation"></i> <p>Vous avez atteint votre maximum de réservations et d\'emprunt</p>');
     exit();
 }
 $statement = $conn->prepare("SELECT COUNT(*) AS count FROM reservations WHERE item_unit_id= '$item_id' AND TIMESTAMPDIFF(hour,opening_date,CURRENT_TIMESTAMP) < 24 AND id NOT IN (SELECT reservation_id FROM borrowings)");

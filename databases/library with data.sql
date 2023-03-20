@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 11:58 PM
+-- Generation Time: Mar 20, 2023 at 02:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -41,7 +41,9 @@ CREATE TABLE `borrowings` (
 --
 
 INSERT INTO `borrowings` (`id`, `opening_date`, `closing_date`, `opening_user_id`, `closing_user_id`, `reservation_id`) VALUES
-(1, '2023-03-09 19:41:16', NULL, 1, NULL, 1);
+(1, '2023-03-09 19:41:16', '2023-03-13 12:45:45', 1, 1, 1),
+(2, '2023-03-04 00:00:00', NULL, 1, NULL, 3),
+(4, '2023-03-20 00:53:51', NULL, 1, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -57,18 +59,19 @@ CREATE TABLE `item` (
   `picture` varchar(256) NOT NULL,
   `release_date` varchar(10) NOT NULL,
   `language` varchar(30) NOT NULL,
-  `page_cout` int(11) NOT NULL
+  `page_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`id`, `title`, `author`, `type`, `picture`, `release_date`, `language`, `page_cout`) VALUES
+INSERT INTO `item` (`id`, `title`, `author`, `type`, `picture`, `release_date`, `language`, `page_count`) VALUES
 (1, 'Et après', 'Guillaume Musso', 'roman', 'guillaume-musso_et-apres.jpg', '2004', 'French', 528),
 (2, 'The universe in a nutshell', 'Stephen Hawking', 'livre', 'universeinnutshell.jpg', '2001', 'English', 244),
 (3, 'فيه ما فيه', 'جلال الدين الرومي', 'livre', 'WhatsApp-Image-2020-03-28-at-3.01.07-PM.jpeg', '1947', 'Arabic', 334),
-(4, 'Quantum Philosophy', 'Roland Omnès', 'livre', '9781400822867.jpg', '1999', 'English', 576);
+(4, 'Quantum Philosophy', 'Roland Omnès', 'livre', '9781400822867.jpg', '1999', 'English', 576),
+(8, 'One Piece, Vol. 1: Romance Dawn', 'Eiichiro Oda', 'revues', 'OnePieceVol.1RomanceDawn2323-0303-1313200125.jpeg', '2003', 'English', 226);
 
 -- --------------------------------------------------------
 
@@ -88,7 +91,27 @@ CREATE TABLE `item_unit` (
 --
 
 INSERT INTO `item_unit` (`id`, `status`, `brought_date`, `item_id`) VALUES
-(1, 'New', '2023-03-09', 2);
+(1, 'neuf', '2023-03-09', 2),
+(2, 'acceptable', '2023-03-05', 2),
+(3, 'déchiré', '2023-03-15', 2),
+(4, 'bon état', '2022-01-15', 2),
+(5, 'assez usé', '2021-01-15', 2),
+(6, 'neuf', '2023-03-15', 1),
+(7, 'bon état', '2023-03-15', 1),
+(8, 'acceptable', '2023-03-15', 1),
+(9, 'assez usé', '2023-03-12', 1),
+(10, 'déchiré', '2023-03-03', 1),
+(11, 'neuf', '2023-03-18', 8),
+(12, 'bon état', '2023-03-07', 3),
+(13, 'neuf', '2023-03-18', 3),
+(14, 'acceptable', '2023-01-15', 3),
+(15, 'assez usé', '2022-10-30', 3),
+(16, 'déchiré', '2017-01-20', 3),
+(18, 'neuf', '2023-03-18', 4),
+(19, 'bon état', '2023-02-26', 4),
+(20, 'acceptable', '2023-01-10', 4),
+(21, 'assez usé', '2022-08-23', 4),
+(22, 'déchiré', '2021-09-08', 4);
 
 -- --------------------------------------------------------
 
@@ -108,7 +131,12 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`id`, `opening_date`, `user_id`, `item_unit_id`) VALUES
-(1, '2023-03-09 19:40:53', 1, 1);
+(1, '2023-03-09 19:40:53', 1, 1),
+(2, '2023-03-10 20:48:20', 1, 2),
+(3, '2023-03-12 16:01:12', 1, 2),
+(4, '2023-03-19 23:25:42', 5, 12),
+(5, '2023-03-19 23:25:52', 5, 21),
+(6, '2023-03-19 23:25:56', 5, 11);
 
 -- --------------------------------------------------------
 
@@ -138,7 +166,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `last_name`, `identity_card_number`, `birthday`, `type`, `phone_number`, `email`, `password`, `creation_date`, `tickets`, `role`, `creator_id`) VALUES
-(1, 'zaidsmd', 'zaid', 'samadi', 'K607333', '2004-03-23', 'Admin', '0681515035', 'zaidsmd111@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2023-03-07', 0, 'admin', NULL);
+(1, 'zaidsmd', 'zaid', 'samadi', 'K0101010', '2004-03-23', 'admin', '0681515037', 'zaidsmd111@gmail.com', 'edfd511ccecc13918de1090a6d1cb310', '2023-03-07', 0, 'admin', NULL),
+(5, 'salsabeel1251', 'Jalil', 'Salsabeel', 'L123123', '1999-05-22', 'Étudiant', '0654891351', 'Salsabeel1999@email.com', 'befe16251de85f763e631c4fc711ec62', '2023-03-18', 0, 'user', 1),
+(6, 'daoud0213', 'Haroun', 'Daoud', 'P516891', '2001-02-22', 'Fonctionnaire', '0687965412', 'DaoudHaroun@email.fr', 'cc447a94e850ca058229e85853703534', '2023-03-18', 0, 'user', 1),
+(7, 'ssaddamazizi', 'Azizi', 'Saddam', 'k120345', '1989-01-22', 'Employé', '0612365987', 'SSaddamAzizi@email.ma', 'e521592b818f3548b446f2737807baf2', '2023-03-18', 0, 'user', 1),
+(8, 'ahbab123mannan', 'Ahbab', 'Mannan', 'KL98775', '1995-05-20', 'Femme au foyer', '0788441122', 'Ahbab123Mannan@email.ru', '54192ba1e99cac511e6f78e93b0dc347', '2023-03-18', 0, 'user', 1),
+(9, 'kasiblatifu', 'Kasib', 'Latif', 'PO12513', '2002-01-10', 'Étudiant', '0788441125', 'Kasibl12@email.ru', 'fca501d1f8a2ebee9f9ff8e2f30dba6d', '2023-03-18', 0, 'user', 1);
 
 --
 -- Indexes for dumped tables
@@ -189,31 +222,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrowings`
 --
 ALTER TABLE `borrowings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `item_unit`
 --
 ALTER TABLE `item_unit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

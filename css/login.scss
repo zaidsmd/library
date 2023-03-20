@@ -19,6 +19,9 @@ form   {
   max-width: 450px;
   background-color: transparentize(#ffffff,.4);
   @include mixins.rounded-borders();
+  @media screen and (max-width: 600px) {
+    padding: 1rem;
+  }
 }
 h1   {
   color: $brown;

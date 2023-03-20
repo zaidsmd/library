@@ -11,6 +11,11 @@
 :root {
   font-size: 16px;
 }
+@media screen and (max-width: 800px) {
+  :root {
+    font-size: 13px;
+  }
+}
 
 .btn {
   cursor: pointer;
@@ -24,6 +29,8 @@
   background-color: #4F5949;
   color: #F2EBE3;
   transition: 300ms;
+  min-width: fit-content;
+  max-width: fit-content;
 }
 .btn-primary:hover {
   background-color: #4d6141;
@@ -33,6 +40,8 @@
   background-color: #C01E29;
   color: #F2EBE3;
   transition: 300ms;
+  min-width: fit-content;
+  max-width: fit-content;
 }
 .btn-danger:hover {
   background-color: #cb131f;
@@ -55,7 +64,8 @@ select {
   border: none;
   box-shadow: none !important;
   background-color: white;
-  padding: 0.6rem 2rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   overflow: clip;
   color: #986C41;
@@ -75,6 +85,7 @@ select:focus {
   background-color: white;
   color: #986C41;
   box-shadow: none !important;
+  border: none;
 }
 .input input:focus {
   border: none;
@@ -116,6 +127,71 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
 }
 
+.btn-checkbox {
+  border: 1px solid #4F5949;
+  color: #4F5949;
+  border-radius: 99px;
+  min-width: fit-content;
+  max-width: fit-content;
+}
+.btn-checkbox label {
+  pointer-events: none;
+}
+.btn-checkbox input {
+  display: none;
+  pointer-events: none;
+}
+.btn-checkbox.active {
+  background-color: #4F5949;
+  color: #F2EBE3;
+}
+
+button[disabled] {
+  background-color: #C1C1C1;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.modal-content {
+  background-color: #F2EBE3;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.not-found i {
+  font-size: 10rem;
+  color: #4F5949;
+}
+.not-found p {
+  font-size: 1.5rem;
+  color: #4F5949;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+aside .navbar {
+  width: 100%;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #C01E29;
+  display: none;
+}
+.error.show {
+  display: block;
+}
+
 body {
   background: linear-gradient(0deg, rgba(152, 108, 65, 0.6), rgba(152, 108, 65, 0.6)), url("../pictures/background.jpg");
   background-size: cover;
@@ -137,6 +213,11 @@ form {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 0.5rem;
   overflow: clip;
+}
+@media screen and (max-width: 600px) {
+  form {
+    padding: 1rem;
+  }
 }
 
 h1 {

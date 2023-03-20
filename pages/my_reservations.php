@@ -9,7 +9,7 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "admin") {
-        header('Location:');
+        header('Location: reservations.php');
     }
 }
 if (!isset($_GET["set"])) {
@@ -24,9 +24,8 @@ if (!isset($_GET["set"])) {
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
-        <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/reservations.css">
+        <link rel="stylesheet" href="../css/reservation.css">
         <title>Mes reservation</title>
     </head>
     <body>
@@ -56,6 +55,7 @@ if (!isset($_GET["set"])) {
                     </div>
                 </a>
             </div>
+            <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </aside>
         <section class="content">
             <h1>Mes reservations</h1>
@@ -102,7 +102,7 @@ function reservations($query, $conn)
             $date2 = new DateTime($reservation["opening_date"]);
             $interval = $date->diff($date2);
             $interval_final = 24 - $interval->format('%h');
-            if ($interval_final < 0) {
+            if ($interval->format('%d') > 0) {
                 $interval_final = 0;
             }
             ?>
@@ -126,7 +126,7 @@ function reservations($query, $conn)
 
                 </div>
                 <div class="time <?php
-                if ($interval_final < 3) {
+                if ($interval_final < 3 and $interval_final > 0 ) {
                     echo "red";
                 } elseif ($interval_final == 0) {
                     echo "gray";

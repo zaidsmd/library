@@ -9,7 +9,7 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "admin") {
-        header('Location:');
+        header('Location: reservations.php');
     }
 }
 if (!isset($_GET["set"])) {
@@ -56,6 +56,7 @@ if (!isset($_GET["set"])) {
                     </div>
                 </a>
             </div>
+            <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </aside>
         <section class="content">
             <h1>Mes reservations</h1>

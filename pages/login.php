@@ -6,7 +6,7 @@ if (isset($_SESSION["sign"])) {
 }
 if (isset($_GET["username"])) {
     include "dbconfig.php";
-    $username = $_GET["username"];
+    $username = strtolower(trim($_GET["username"]));
     $password = md5($_GET["password"]);
     $statement = $conn->prepare("SELECT * FROM users WHERE `username` = '$username' AND `password` = '$password'");
     $statement->execute();
@@ -14,9 +14,8 @@ if (isset($_GET["username"])) {
     if (count($result) > 0 && $result[0]["tickets"] < 3 ) {
         $_SESSION["id"] = $result[0]["id"];
         $_SESSION["sign"] = true;
-        if ($result[0]["role"]=="user"){
-            header('Location: home.php');
-        }
+        header('Location: home.php');
+        exit();
     }
 }
 ?>
@@ -37,13 +36,15 @@ if (isset($_GET["username"])) {
 <form action="login.php" method="get">
     <h1>Login</h1>
     <?php
-    if (isset($result)){
-        if ($result[0]["tickets"] ==3){
-            ?> <p class='response'>Votre compte a été suspendu</p>
-            <?php
-        }else {
+    if (isset($result)) {
+        if (isset($result[0])) {
+            if ($result[0]["tickets"] > 3) {
+                ?> <p class='response'>Votre compte a été suspendu</p>
+                <?php
+            }
+        } else {
             ?>
-            <p class='response'>Le mot de pass ou email est incorrect</p>
+            <p class='response'>Le mot de pass ou username est incorrect</p>
             <?php
         }
     }

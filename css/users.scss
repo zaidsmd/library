@@ -1,0 +1,54 @@
+@import "navbar";
+@import "side-bar";
+//-----------------------
+.card {
+  @include rounded-borders();
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+}
+.modal-body form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem ;
+}
+.input-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+}
+.select {
+  padding-right:0 ;
+}
+#response-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  i {
+    font-size: 4rem;
+    color: $green;
+  }
+  p{
+    font-size: 1.2rem;
+    color: $green;
+  }
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

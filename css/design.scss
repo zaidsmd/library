@@ -1,23 +1,18 @@
 @import "navbar";
 @import "card";
 //---------------------------------
+
 body {
   background-color: $creamy;
 
   > *:not(nav) {
     padding: 1rem 2rem;
+    @media screen and (max-width: 450px) {
+      padding: 1rem;
+    }
   }
 }
 
-.card-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 4rem;
-  row-gap: 2rem;
-  width: 100%;
-}
 
 .filter-bar {
   form {
@@ -37,6 +32,12 @@ body {
   background-size: cover;
   height: max-content;
   justify-content: space-between;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    > * {
+      width: 100% !important;
+    }
+  }
 
   .right {
     display: flex;
@@ -44,6 +45,12 @@ body {
     justify-content: center;
     align-items: center;
     width: 40%;
+    @media screen and (max-width: 550px) {
+      width: 70%;
+    }
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
 
     h1 {
       color: $light-brown;
@@ -52,6 +59,16 @@ body {
       font-size: 4rem;
       text-align: center;
       max-width: 400px;
+      @media screen and (max-width: 1024px) {
+        font-size: 3rem;
+      }
+      @media screen and (max-width: 900px) {
+        font-size: 4rem;
+        max-width: none;
+      }
+      @media screen and (max-width: 600px) {
+        font-size: 2.7rem;
+      }
     }
 
     form {
@@ -62,6 +79,9 @@ body {
 
     .input {
       width: 70%;
+      @media screen and (max-width: 800px) {
+        width: 100%;
+      }
 
       input {
         border-radius: 99px;
@@ -78,7 +98,6 @@ body {
           color: $creamy;
         }
       }
-
       .search {
         position: absolute;
         top: 16%;
@@ -90,6 +109,11 @@ body {
   }
 
   .left {
+    @media screen and (max-width: 900px) {
+      padding: 1rem 0;
+      justify-content: space-around;
+    }
+
     padding: 3.5rem 0;
     align-items: center;
     pointer-events: none;
@@ -97,10 +121,19 @@ body {
     gap: 0;
     justify-content: space-between;
     transition: all ease .5s;
+
     .card-link {
       pointer-events: auto;
       transition: all ease-in-out 300ms;
       width: 27.5%;
+      @media screen and (max-width: 900px) {
+        width: 30.5%;
+
+        &:last-child {
+          display: none;
+        }
+      }
+
 
       &:hover .card-content {
         display: flex;

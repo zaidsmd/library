@@ -9,7 +9,7 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "admin") {
-        header('Location:');
+        header('Location: reservations.php');
     }
 }
 ?>
@@ -165,7 +165,6 @@ function cards($query, $conn)
     }
 }
 
-;
 
 
 

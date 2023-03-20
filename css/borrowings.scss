@@ -1,6 +1,6 @@
 @import "navbar";
 @import "side-bar";
-@import "reservations";
+@import "reservation";
 
 .gerent {
   display: flex;
@@ -18,9 +18,53 @@
 .info {
   width: fit-content;
 }
+.gerent {
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+}
 .time {
   padding: 0 .5rem;
   p{
     text-align: center;
+  }
+}
+.card-form {
+  box-shadow: $shadow;
+  @include rounded-borders();
+  .card {
+    box-shadow: none;
+    border-radius: 0;
+  }
+  width: 100%;
+  .form {
+    background-color: transparentize(white,.7rem);
+    width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      .input-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
+}
+.card button {
+  padding: 0 1rem;
+  cursor: pointer;
+  i{
+    transition: all ease-in-out 300ms;
+  }
+&.active {
+  i {
+    transform: rotate(-90deg);
+  }
+}
+  &:not([disabled]){
+    background-color: $green;
   }
 }
