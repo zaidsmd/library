@@ -24,7 +24,7 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/borrowings.css">
+        <link rel="stylesheet" href="../css/borrowings.min.css">
         <title>Emprunts</title>
     </head>
     <body>
@@ -115,7 +115,7 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
-    <script src="../scripts/borrowings.js"></script>
+    <script src="../scripts/borrowings.min.js"></script>
     </body>
     </html>
 <?php

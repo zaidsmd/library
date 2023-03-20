@@ -10,7 +10,7 @@ main {
   padding: 2rem 5rem;
   align-items: center;
   @media screen and (max-width: 1240px) {
-   padding: 2rem 1rem;
+    padding: 2rem 1rem;
   }
 }
 
@@ -54,7 +54,7 @@ main {
   gap: 1rem;
   padding: 1rem;
   @media screen and (max-width: 1080px) {
-   width: 50%;
+    width: 50%;
   }
   @media screen and (max-width: 1000px) {
     width: 100%;
@@ -79,10 +79,11 @@ main {
     color: $black;
     @media screen and (max-width: 1000px) {
       width: 100%;
-      &>* {
+      & > * {
         text-align: center;
       }
     }
+
     .title {
       font-size: 2rem;
       font-weight: 500;
@@ -123,6 +124,7 @@ main {
       font-size: 1.5rem;
     }
   }
+
   .not-available {
     display: flex;
     flex-direction: row;
@@ -135,6 +137,7 @@ main {
     padding: .2rem .5rem;
     font-size: 1.1rem;
   }
+
   i {
     font-size: 1.5rem;
   }
@@ -153,6 +156,7 @@ button[disabled] {
 
   }
 }
+
 .items {
   display: flex;
   flex-direction: row;
@@ -162,7 +166,8 @@ button[disabled] {
     width: 100%;
     flex-direction: column;
   }
-  h3{
+
+  h3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     writing-mode: vertical-rl;
@@ -178,8 +183,9 @@ button[disabled] {
     }
   }
 }
-.scroller{
-  overflow-y: scroll ;
+
+.scroller {
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -192,6 +198,7 @@ button[disabled] {
   }
 
 }
+
 .item-unit {
   background-color: white;
   @include rounded-borders();
@@ -200,10 +207,12 @@ button[disabled] {
   align-items: center;
   padding: .5rem;
   max-width: 449px;
+
   .item-unit-img {
     @include rounded-borders();
     width: 150px;
   }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -211,25 +220,30 @@ button[disabled] {
     padding: .5rem 1rem;
   }
 }
+
 .modal-content {
   background-color: $creamy;
 }
+
 #response-modal .modal-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   i {
     font-size: 4rem;
     color: $green;
   }
-  p{
+
+  p {
     font-size: 1.2rem;
     color: $green;
   }
 }
+
 @media screen and (max-width: 1000px) {
-  h1 , h3 {
+  h1, h3 {
     text-align: center;
     font-size: 1.5rem;
   }

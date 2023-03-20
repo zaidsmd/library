@@ -2,7 +2,7 @@
 session_start();
 include "dbconfig.php";
 if (!isset($_SESSION["sign"])) {
-    header('Location: login.php ');
+    header('Location: login.php');
 } else {
     $id = $_SESSION["id"];
     $statement = $conn->prepare("SELECT * FROM users WHERE `id` = '$id' ");
@@ -23,7 +23,7 @@ if (!isset($_SESSION["sign"])) {
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
         <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/design.css">
+        <link rel="stylesheet" href="../css/design.min.css">
         <title>Library Accueil</title>
     </head>
     <body>

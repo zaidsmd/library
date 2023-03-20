@@ -26,7 +26,7 @@ if (!isset($_GET["set"])) {
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
         <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/borrowings.css">
+        <link rel="stylesheet" href="../css/borrowings.min.css">
         <title>Mes emprunts</title>
     </head>
     <body>

@@ -1,7 +1,8 @@
 @use "mixins";
 @import "variables";
+
 body {
-  background: linear-gradient(0deg ,transparentize($brown,.4),transparentize($brown,.4)), url("../pictures/background.jpg");
+  background: linear-gradient(0deg, transparentize($brown, .4), transparentize($brown, .4)), url("../pictures/background.jpg");
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -9,7 +10,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-form   {
+
+form {
   padding: 4rem 3rem;
   display: flex;
   flex-direction: column;
@@ -17,33 +19,39 @@ form   {
   gap: 2rem;
   width: 90%;
   max-width: 450px;
-  background-color: transparentize(#ffffff,.4);
+  background-color: transparentize(#ffffff, .4);
   @include mixins.rounded-borders();
   @media screen and (max-width: 600px) {
     padding: 1rem;
   }
 }
-h1   {
+
+h1 {
   color: $brown;
   font-weight: 700;
   font-size: 3rem;
 }
-.input  {
+
+.input {
   width: 100%;
+
   input {
     width: 100%;
     background-color: white;
     border: none;
     @include mixins.rounded-borders();
+
     &:focus ~ label {
       color: $brown;
       transform: translateY(-1.1rem) scale(.9) !important;
     }
   }
+
   label {
     color: $light-brown;
   }
 }
+
 .response {
   color: $red;
   background-color: rgba(231, 64, 64, 0.1);

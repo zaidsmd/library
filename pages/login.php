@@ -28,7 +28,7 @@ if (isset($_GET["username"])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login.min.css">
     <title>Se connecter à la médiathèque</title>
 </head>
 <body>

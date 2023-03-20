@@ -25,7 +25,7 @@ if (!isset($_GET["set"])) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/reservation.css">
+        <link rel="stylesheet" href="../css/reservation.min.css">
         <title>Mes reservation</title>
     </head>
     <body>

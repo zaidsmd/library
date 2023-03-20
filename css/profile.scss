@@ -52,6 +52,7 @@ main {
         padding: 0;
       }
     }
+
     * {
       padding: .5rem 0;
     }
@@ -69,10 +70,12 @@ main {
       width: 100%;
       padding-left: 1rem;
       @include rounded-borders();
+
       &:not([disabled]) {
         background-color: transparentize($gray, .7);
 
       }
+
       &:focus {
         border: none;
         box-shadow: none;
@@ -98,6 +101,7 @@ main {
       }
     }
   }
+
   .buttons {
     display: flex;
     flex-direction: row-reverse;
@@ -106,7 +110,7 @@ main {
   }
 }
 
-#authentication-modal .modal-content , #password-modal .modal-content {
+#authentication-modal .modal-content, #password-modal .modal-content {
   background-color: $creamy;
 }
 

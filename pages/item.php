@@ -49,7 +49,7 @@ if (count($items) == 0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/item.css">
+    <link rel="stylesheet" href="../css/item.min.css">
     <title><?= $items[0]["title"] ?></title>
 </head>
 <body>
@@ -175,6 +175,6 @@ include "../components/navbar.php";
 </div>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-<script src="../scripts/item.js"></script>
+<script src="../scripts/item.min.js"></script>
 </body>
 </html>

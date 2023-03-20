@@ -16,46 +16,55 @@ main {
   gap: 1rem;
   padding: 2rem 4rem;
   width: 100%;
-  form{
+
+  form {
     display: flex;
     flex-direction: row;
     gap: 1rem;
   }
+
   h1 {
     color: $black;
     font-size: 1.5rem;
     font-weight: 500;
   }
 }
+
 .card-link {
   width: 250px;
 }
+
 form > button {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: .5rem;
-  i{
+
+  i {
     font-size: 1.2rem;
   }
 }
+
 .modal-body {
   form {
     display: flex;
     flex-direction: column;
-    padding: 1rem ;
+    padding: 1rem;
   }
+
   .input-group {
     display: flex;
     flex-direction: row;
     gap: 1rem;
   }
+
   select {
     padding-left: .5rem !important;
     font-size: .9rem;
   }
 }
+
 #item-unit-modal .modal-body form {
   padding: 0 1rem;
 }

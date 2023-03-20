@@ -24,4 +24,4 @@ document.querySelectorAll('.items button[data-id]').forEach(btn=>{
         })
     })
 
-})
+});

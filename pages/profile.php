@@ -23,7 +23,7 @@ if (!isset($_SESSION["sign"])) {
     <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://kit.fontawesome.com/a5fdcae6a3.css" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/profile..css">
+    <link rel="stylesheet" href="../css/profile.min.css">
     <title><?= $result[0]["username"] ?></title>
 </head>
 <body>
@@ -149,6 +149,6 @@ include "../components/navbar.php"
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
-<script src="../scripts/profile.js" ></script>
+<script src="../scripts/profile.min.js" ></script>
 </body>
 </html>

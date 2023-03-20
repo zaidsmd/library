@@ -9,41 +9,52 @@
   align-items: center;
   gap: 1rem;
 }
+
 .date {
   p {
     word-spacing: normal;
     text-align: center;
   }
 }
+
 .info {
   width: fit-content;
 }
+
 .gerent {
   @media screen and (max-width: 900px) {
     display: none;
   }
 }
+
 .time {
   padding: 0 .5rem;
-  p{
+
+  p {
     text-align: center;
   }
 }
+
 .card-form {
   box-shadow: $shadow;
   @include rounded-borders();
+
   .card {
     box-shadow: none;
     border-radius: 0;
   }
+
   width: 100%;
+
   .form {
-    background-color: transparentize(white,.7rem);
+    background-color: transparentize(white, .7rem);
     width: 100%;
+
     form {
       display: flex;
       flex-direction: column;
       padding: 1rem;
+
       .input-group {
         display: flex;
         flex-direction: row;
@@ -53,18 +64,22 @@
     }
   }
 }
+
 .card button {
   padding: 0 1rem;
   cursor: pointer;
-  i{
+
+  i {
     transition: all ease-in-out 300ms;
   }
-&.active {
-  i {
-    transform: rotate(-90deg);
+
+  &.active {
+    i {
+      transform: rotate(-90deg);
+    }
   }
-}
-  &:not([disabled]){
+
+  &:not([disabled]) {
     background-color: $green;
   }
 }

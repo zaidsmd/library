@@ -21,7 +21,7 @@ if ($result[0]["role"] == "user") {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/users.css">
+        <link rel="stylesheet" href="../css/users.min.css">
         <title>Adhérents</title>
     </head>
     <body>
@@ -228,7 +228,7 @@ if ($result[0]["role"] == "user") {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
-    <script src="../scripts/users.js"></script>
+    <script src="../scripts/users.min.js"></script>
     <?php
     if (isset($_GET["response"])) {
         ?>
