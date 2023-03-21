@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 21, 2023 at 01:38 AM
+-- Generation Time: Mar 21, 2023 at 04:01 PM
 -- Server version: 10.3.37-MariaDB-log-cll-lve
 -- PHP Version: 7.4.33
 
@@ -43,8 +43,12 @@ CREATE TABLE `borrowings` (
 
 INSERT INTO `borrowings` (`id`, `opening_date`, `closing_date`, `opening_user_id`, `closing_user_id`, `reservation_id`) VALUES
 (1, '2023-03-09 19:41:16', '2023-03-13 12:45:45', 1, 1, 1),
-(2, '2023-03-04 00:00:00', NULL, 1, NULL, 3),
-(4, '2023-03-20 00:53:51', NULL, 1, NULL, 4);
+(2, '2023-03-04 00:00:00', '2023-03-21 13:07:00', 1, 1, 3),
+(4, '2023-03-20 00:53:51', NULL, 1, NULL, 4),
+(6, '2023-03-21 12:30:38', NULL, 1, NULL, 7),
+(8, '2023-03-21 13:28:35', NULL, 1, NULL, 10),
+(9, '2023-03-21 13:28:36', '2023-03-21 15:22:26', 1, 1, 9),
+(11, '2023-03-21 14:33:56', NULL, 1, NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,15 @@ INSERT INTO `reservations` (`id`, `opening_date`, `user_id`, `item_unit_id`) VAL
 (3, '2023-03-12 16:01:12', 1, 2),
 (4, '2023-03-19 23:25:42', 5, 12),
 (5, '2023-03-19 23:25:52', 5, 21),
-(6, '2023-03-19 23:25:56', 5, 11);
+(6, '2023-03-19 23:25:56', 5, 11),
+(7, '2023-03-21 01:45:59', 5, 11),
+(8, '2023-03-21 01:46:10', 5, 16),
+(9, '2023-03-21 12:54:03', 7, 6),
+(10, '2023-03-21 13:15:00', 7, 7),
+(11, '2023-03-21 13:15:30', 7, 18),
+(12, '2023-03-21 15:55:20', 6, 8),
+(13, '2023-03-21 15:55:50', 6, 13),
+(14, '2023-03-21 15:56:04', 6, 19);
 
 -- --------------------------------------------------------
 
@@ -170,9 +182,9 @@ INSERT INTO `users` (`id`, `username`, `name`, `last_name`, `identity_card_numbe
 (1, 'zaidsmd', 'zaid', 'samadi', 'K0101010', '2004-03-23', 'admin', '0681515037', 'zaidsmd111@gmail.com', 'edfd511ccecc13918de1090a6d1cb310', '2023-03-07', 0, 'admin', NULL),
 (5, 'salsabeel1251', 'Jalil', 'Salsabeel', 'L123123', '1999-05-22', 'Étudiant', '0654891351', 'Salsabeel1999@email.com', '84011bec98ef5ab831d88867a8ca44f5', '2023-03-18', 0, 'user', 1),
 (6, 'daoud0213', 'Haroun', 'Daoud', 'P516891', '2001-02-22', 'Fonctionnaire', '0687965412', 'DaoudHaroun@email.fr', 'cc447a94e850ca058229e85853703534', '2023-03-18', 0, 'user', 1),
-(7, 'ssaddamazizi', 'Azizi', 'Saddam', 'k120345', '1989-01-22', 'Employé', '0612365987', 'SSaddamAzizi@email.ma', 'e521592b818f3548b446f2737807baf2', '2023-03-18', 0, 'user', 1),
+(7, 'ssaddamazizi', 'Azizi', 'Saddam', 'k120345', '1989-01-22', 'Employé', '0612365987', 'SSaddamAzizi@email.ma', '8d82f835d5553fd4577e33fdd969535c', '2023-03-18', 3, 'user', 1),
 (8, 'ahbab123mannan', 'Ahbab', 'Mannan', 'KL98775', '1995-05-20', 'Femme au foyer', '0788441122', 'Ahbab123Mannan@email.ru', '54192ba1e99cac511e6f78e93b0dc347', '2023-03-18', 0, 'user', 1),
-(9, 'kasiblatifu', 'Kasib', 'Latif', 'PO12513', '2002-01-10', 'Étudiant', '0788441125', 'Kasibl12@email.ru', 'fca501d1f8a2ebee9f9ff8e2f30dba6d', '2023-03-18', 0, 'user', 1);
+(9, 'kasiblatifu', 'Kasib', 'Latif', 'PO12513', '2002-01-10', 'Étudiant', '0788441125', 'Kasibl12@email.ru', '2d6cee1f2b5eeee69b6ccdba96e61a53', '2023-03-18', 3, 'user', 1);
 
 --
 -- Indexes for dumped tables
@@ -223,7 +235,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borrowings`
 --
 ALTER TABLE `borrowings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -241,7 +253,7 @@ ALTER TABLE `item_unit`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
