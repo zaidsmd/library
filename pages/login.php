@@ -38,7 +38,7 @@ if (isset($_GET["username"])) {
     <?php
     if (isset($result)) {
         if (isset($result[0])) {
-            if ($result[0]["tickets"] > 3) {
+            if ($result[0]["tickets"] >= 3) {
                 ?> <p class='response'>Votre compte a été suspendu</p>
                 <?php
             }

@@ -19,7 +19,7 @@ $item_id = $_GET["item_id"];
 $statement= $conn->prepare("SELECT * FROM item_unit WHERE id = '$item_id'");
 $statement->execute();
 $item = $statement->fetchAll();
-if ($item[0]["status"] == "déchirer") {
+if ($item[0]["status"] == "déchiré") {
     echo json_encode('<i class="fa-solid fa-exclamation"></i> <p>Cette ouvrage est déchiré et ne peut pas etre réservé</p>');
     exit();
 }

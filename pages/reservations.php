@@ -85,7 +85,7 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
                                    INNER JOIN users u on u.id = reservations.user_id
                           WHERE 1";
                 //-----------------------------------------------------------------------
-                if ($_GET["set"] == 0) {
+                if ($_GET["set"] === "0") {
                     $query .= " AND reservations.id NOT IN (SELECT reservation_id FROM borrowings)";
                 } else if ($_GET["set"] == "complete") {
                     $query .= " AND reservations.id IN (SELECT reservation_id FROM borrowings)";

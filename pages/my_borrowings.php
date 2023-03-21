@@ -56,7 +56,8 @@ if (!isset($_GET["set"])) {
                     </div>
                 </a>
             </div>
-            <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i
+                        class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </aside>
         <section class="content">
             <h1>Mes reservations</h1>
@@ -86,7 +87,7 @@ if (!isset($_GET["set"])) {
                                           INNER JOIN reservations r on borrowings.reservation_id = r.id
                                           INNER JOIN item_unit iu on r.item_unit_id = iu.id
                                           INNER JOIN item i on iu.item_id = i.id
-                                          INNER JOIN users u on borrowings.opening_user_id
+                                          INNER JOIN users u on u.id = borrowings.opening_user_id
                                  where user_id = '$id'";
                 //-----------------------------------------------------------------------------------------
                 if ($_GET["set"] == "active") {
@@ -94,11 +95,7 @@ if (!isset($_GET["set"])) {
                 } else {
                     $query .= " AND closing_date is not null";
                 }
-                try {
-                    emprunt($query, $conn);
-                } catch (Exception $e) {
-                    echo $e;
-                }
+                emprunt($query, $conn);
                 ?>
             </div>
         </section>
@@ -144,9 +141,9 @@ function emprunt($query, $conn)
 
                 </div>
                 <div class="time <?php
-                if ($interval->format('%d') < 1 && $interval->format('%h')<5) {
+                if ($interval->format('%d') < 1 && $interval->format('%h') < 5) {
                     echo "red";
-                } elseif (($interval->format('%d') == 0 && $interval->format('%h') == 0 ) || $borrowing["closing_date"] != "") {
+                } elseif (($interval->format('%d') == 0 && $interval->format('%h') == 0) || $borrowing["closing_date"] != "") {
                     echo "gray";
                 } else {
                     echo "green";

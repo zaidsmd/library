@@ -91,7 +91,7 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
                                    INNER JOIN users u on u.id = r.user_id
                           WHERE 1";
                 //-----------------------------------------------------------------------
-                if ($_GET["set"] == 0) {
+                if ($_GET["set"] === "0") {
                     $query .= " AND borrowings.closing_date is null AND TIMESTAMPDIFF(hour,borrowings.opening_date, CURRENT_TIMESTAMP) > 24*15";
                 } else if ($_GET["set"] == "complete") {
                     $query .= " AND borrowings.closing_date is not null";

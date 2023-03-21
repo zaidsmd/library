@@ -55,7 +55,8 @@ if (!isset($_GET["set"])) {
                     </div>
                 </a>
             </div>
-            <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            <a href="logout.php" class="btn btn-danger"><span>Se déconnecter</span> <i
+                        class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </aside>
         <section class="content">
             <h1>Mes reservations</h1>
@@ -69,19 +70,15 @@ if (!isset($_GET["set"])) {
             </form>
             <div class="card-container">
                 <?php
-                $query = "SELECT * FROM reservations JOIN item_unit iu on iu.id = reservations.item_unit_id join item i on i.id = iu.item_id WHERE user_id = '$id' ";
+                $query = "SELECT * FROM reservations INNER JOIN item_unit iu on iu.id = reservations.item_unit_id INNER JOIN item i on i.id = iu.item_id WHERE user_id = '$id' ";
                 if ($_GET["set"] == "active") {
-                    $query .= " AND DATEDIFF(CURTIME(),opening_date) < 24 AND iu.id NOT IN (SELECT reservation_id FROM borrowings)";
-                } elseif ($_GET["set"] == 0) {
-                    $query .= " AND iu.id NOT IN (SELECT reservation_id FROM borrowings)";
-                } else {
-                    $query .= " AND iu.id IN (SELECT reservation_id FROM borrowings)";
+                    $query .= " AND TIMESTAMPDIFF(hour,opening_date,CURRENT_TIMESTAMP)  < 24 AND reservations.id NOT IN (SELECT reservation_id FROM borrowings)";
+                }elseif ($_GET["set"] == '0') {
+                    $query .= " AND reservations.id NOT IN (SELECT `reservation_id` FROM borrowings)";
+                }else {
+                    $query .= " AND reservations.id IN (SELECT `reservation_id` FROM borrowings)";
                 }
-                try {
-                    reservations($query, $conn);
-                } catch (Exception $e) {
-                    echo $e;
-                }
+                reservations($query, $conn);
                 ?>
             </div>
         </section>
@@ -126,7 +123,7 @@ function reservations($query, $conn)
 
                 </div>
                 <div class="time <?php
-                if ($interval_final < 3 and $interval_final > 0 ) {
+                if ($interval_final < 3 and $interval_final > 0) {
                     echo "red";
                 } elseif ($interval_final == 0) {
                     echo "gray";
