@@ -9,7 +9,7 @@ $statement = $conn->prepare("SELECT * FROM users WHERE id = '$id'");
 $statement->execute();
 $result = $statement->fetchAll();
 if ($result[0]["role"] == "user") {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 if (!isset($_GET["set"]) && !isset($_GET["search"])) {
     header('Location: reservations.php?set=all');
@@ -18,11 +18,7 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
     <!doctype html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
+        <?php include "../components/head.php"?>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="../css/reservation.min.css">
         <title>Reservations</title>
@@ -98,11 +94,7 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
                         $query .= " AND identity_card_number LIKE '%$search%'";
                     }
                 }
-                try {
                     reservations($query, $conn);
-                } catch (Exception $e) {
-                    echo $e;
-                }
                 ?>
             </div>
         </section>
@@ -113,21 +105,15 @@ if (!isset($_GET["set"]) && !isset($_GET["search"])) {
     </body>
     </html>
 <?php
-function reservations($query, $conn): void
+function reservations($query, $conn)
 {
     $statement = $conn->prepare($query);
     $statement->execute();
     $reservations = $statement->fetchAll();
     if (count($reservations) > 0) {
         foreach ($reservations as $reservation) {
-            try {
-                $date = new DateTime(date('y-m-d H:i:s'));
-            } catch (Exception) {
-            }
-            try {
-                $date2 = new DateTime($reservation["opening_date"]);
-            } catch (Exception) {
-            }
+            $date = new DateTime(date('y-m-d H:i:s'));
+            $date2 = new DateTime($reservation["opening_date"]);
             $interval = $date->diff($date2);
             $interval_final = 24 - $interval->format('%h');
             if ($interval->format('%d') > 0) {

@@ -5,6 +5,9 @@ aside {
   max-width: 300px;
   min-width: 252px;
   width: 30%;
+  position: sticky;
+  top: $navbar-height;
+  max-height: calc(100vh - $navbar-height);
   @media screen and (max-width: 650px) {
     width: fit-content;
     min-width: revert;
@@ -55,6 +58,7 @@ aside {
     }
   }
   >a {
+    position: sticky;
     span{
       @media screen and (max-width: 650px) {
         display: none;
