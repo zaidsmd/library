@@ -13,7 +13,7 @@ if (!isset($_SESSION["sign"])) {
     }
 }
 if (!isset($_GET["item_id"])) {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 $item_id = $_GET["item_id"];
 $statement= $conn->prepare("SELECT * FROM item_unit WHERE id = '$item_id'");

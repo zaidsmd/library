@@ -9,11 +9,11 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "user") {
-        header('Location: home.php');
+        header('Location: index.php');
     }
 }
 if (!isset($_GET["status"]) || !isset($_GET["borrowing_id"]) ) {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 $borrowing_id = $_GET["borrowing_id"];
 $status = $_GET["status"];

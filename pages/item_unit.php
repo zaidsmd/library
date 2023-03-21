@@ -9,11 +9,11 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "user") {
-        header('Location: home.php');
+        header('Location: index.php');
     }
 }
 if (!isset($_GET["id"])) {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 $item_id = $_GET["id"];
 //------------------------------------------------------------------------
@@ -43,11 +43,7 @@ if (count($items) == 0) {
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
+    <?php include "../components/head.php"?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/item_unit.min.css">
     <title><?= $items[0]["title"] ?></title>

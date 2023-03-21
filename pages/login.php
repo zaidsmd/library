@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["sign"])) {
-    header('Location: home.php ');
+    header('Location: index.php ');
     exit();
 }
 if (isset($_GET["username"])) {
@@ -14,7 +14,7 @@ if (isset($_GET["username"])) {
     if (count($result) > 0 && $result[0]["tickets"] < 3 ) {
         $_SESSION["id"] = $result[0]["id"];
         $_SESSION["sign"] = true;
-        header('Location: home.php');
+        header('Location: index.php');
         exit();
     }
 }
@@ -22,11 +22,7 @@ if (isset($_GET["username"])) {
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="../pictures/logo.png" type="image/gif" sizes="16x16">
+    <?php include "../components/head.php"?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/login.min.css">
     <title>Se connecter à la médiathèque</title>

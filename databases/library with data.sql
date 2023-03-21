@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.11
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 02:00 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Host: localhost:3306
+-- Generation Time: Mar 21, 2023 at 01:38 AM
+-- Server version: 10.3.37-MariaDB-log-cll-lve
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `library`
+-- Database: `zaid_library`
 --
 
 -- --------------------------------------------------------
@@ -34,7 +35,7 @@ CREATE TABLE `borrowings` (
   `opening_user_id` int(11) NOT NULL,
   `closing_user_id` int(11) DEFAULT NULL,
   `reservation_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `borrowings`
@@ -60,7 +61,7 @@ CREATE TABLE `item` (
   `release_date` varchar(10) NOT NULL,
   `language` varchar(30) NOT NULL,
   `page_count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `item`
@@ -84,7 +85,7 @@ CREATE TABLE `item_unit` (
   `status` varchar(30) NOT NULL,
   `brought_date` date NOT NULL,
   `item_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `item_unit`
@@ -124,7 +125,7 @@ CREATE TABLE `reservations` (
   `opening_date` datetime NOT NULL DEFAULT current_timestamp(),
   `user_id` int(11) NOT NULL,
   `item_unit_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `reservations`
@@ -159,7 +160,7 @@ CREATE TABLE `users` (
   `tickets` int(1) DEFAULT 0,
   `role` varchar(5) DEFAULT 'user',
   `creator_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -167,7 +168,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `name`, `last_name`, `identity_card_number`, `birthday`, `type`, `phone_number`, `email`, `password`, `creation_date`, `tickets`, `role`, `creator_id`) VALUES
 (1, 'zaidsmd', 'zaid', 'samadi', 'K0101010', '2004-03-23', 'admin', '0681515037', 'zaidsmd111@gmail.com', 'edfd511ccecc13918de1090a6d1cb310', '2023-03-07', 0, 'admin', NULL),
-(5, 'salsabeel1251', 'Jalil', 'Salsabeel', 'L123123', '1999-05-22', 'Étudiant', '0654891351', 'Salsabeel1999@email.com', 'befe16251de85f763e631c4fc711ec62', '2023-03-18', 0, 'user', 1),
+(5, 'salsabeel1251', 'Jalil', 'Salsabeel', 'L123123', '1999-05-22', 'Étudiant', '0654891351', 'Salsabeel1999@email.com', '84011bec98ef5ab831d88867a8ca44f5', '2023-03-18', 0, 'user', 1),
 (6, 'daoud0213', 'Haroun', 'Daoud', 'P516891', '2001-02-22', 'Fonctionnaire', '0687965412', 'DaoudHaroun@email.fr', 'cc447a94e850ca058229e85853703534', '2023-03-18', 0, 'user', 1),
 (7, 'ssaddamazizi', 'Azizi', 'Saddam', 'k120345', '1989-01-22', 'Employé', '0612365987', 'SSaddamAzizi@email.ma', 'e521592b818f3548b446f2737807baf2', '2023-03-18', 0, 'user', 1),
 (8, 'ahbab123mannan', 'Ahbab', 'Mannan', 'KL98775', '1995-05-20', 'Femme au foyer', '0788441122', 'Ahbab123Mannan@email.ru', '54192ba1e99cac511e6f78e93b0dc347', '2023-03-18', 0, 'user', 1),

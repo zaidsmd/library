@@ -9,7 +9,7 @@ $statement = $conn->prepare("SELECT * FROM users WHERE id = '$id'");
 $statement->execute();
 $result = $statement->fetchAll();
 if ($result[0]["role"] == "user") {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 
 $random = generateRandomString(8);

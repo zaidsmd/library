@@ -200,6 +200,9 @@ nav {
   border-bottom: 1px solid #BEAF98;
   padding: 0.5rem 1.5rem;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 #logo {
@@ -245,6 +248,9 @@ aside {
   max-width: 300px;
   min-width: 252px;
   width: 30%;
+  position: sticky;
+  top: 67px;
+  max-height: calc(100vh - 67px);
 }
 @media screen and (max-width: 650px) {
   aside {
@@ -301,6 +307,9 @@ aside .navbar .nav-link div {
 aside .navbar .nav-link i {
   font-size: 1.5rem;
   color: #4F5949;
+}
+aside > a {
+  position: sticky;
 }
 @media screen and (max-width: 650px) {
   aside > a span {

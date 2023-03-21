@@ -9,7 +9,7 @@ if (!isset($_SESSION["sign"])) {
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result[0]["role"] == "user") {
-        header('Location: home.php ');
+        header('Location: index.php ');
         exit();
     }
 }
