@@ -30,8 +30,9 @@
   align-items: center;
 }
 .card-body {
-  writing-mode: vertical-rl;
   transform: rotate(180deg);
+  writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,9 +41,10 @@
   margin-bottom: auto;
   margin-top: auto;
   .title {
-    display: -webkit-box;
     -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
     -webkit-box-orient: vertical;
+    white-space: nowrap;
     overflow: hidden;
     color: $green;
   }
